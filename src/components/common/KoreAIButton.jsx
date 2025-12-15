@@ -50,6 +50,7 @@ export default function KoreAIButton({ isOpen, onToggle }) {
                 onMouseEnter={e => e.currentTarget.style.transform = isOpen ? 'rotate(90deg) scale(1.05)' : 'scale(1.05)'}
                 onMouseLeave={e => e.currentTarget.style.transform = isOpen ? 'rotate(90deg)' : 'scale(1)'}
                 aria-label="AI Assistant"
+                className="hide-on-mobile"
             >
                 <span className="material-symbols-outlined">{isOpen ? 'close' : 'smart_toy'}</span>
             </button>
