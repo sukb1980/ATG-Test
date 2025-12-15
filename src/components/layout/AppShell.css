@@ -58,6 +58,14 @@
     .hide-on-mobile {
         display: none !important;
     }
+
+    .ai-fab {
+        bottom: 80px !important;
+    }
+}
+
+.ai-fab {
+    bottom: 24px;
 }
 
 /* Nav Item Styles */
