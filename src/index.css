@@ -17,6 +17,12 @@
   --md-sys-color-secondary-container: #f1f5f9;
   --md-sys-color-on-secondary-container: #0f172a;
 
+  /* Tertiary/Accent (AI) */
+  --md-sys-color-tertiary: #0ea5e9;
+  --md-sys-color-on-tertiary: #FFFFFF;
+  --md-sys-color-tertiary-container: #e0f2fe;
+  --md-sys-color-on-tertiary-container: #0369a1;
+
   /* Backgrounds */
   --md-sys-color-background: #f8fafc;
   /* Very light slate gray, almost white */
