@@ -25,42 +25,49 @@ export default function AppShell() {
 
     const navItems = ALL_NAV_ITEMS.filter(item => item.roles.includes(role));
 
-    <nav className="flex flex-col">
-        {navItems.map((item) => (
-            <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-            >
-                <span className="material-symbols-outlined icon">{item.icon}</span>
-                <span className="label">{item.label}</span>
-            </NavLink>
-        ))}
-    </nav>
-            </aside >
+    return (
+        <div className="app-shell">
+            {/* Sidebar - Desktop */}
+            <aside className="sidebar">
+                <div style={{ padding: '24px 16px', marginBottom: '16px' }}>
+                    <h1 className="headline-small text-primary" style={{ margin: 0 }}>ATG App</h1>
+                    <span className="label-small" style={{ opacity: 0.7 }}>{role} Portal</span>
+                </div>
 
-        {/* Main Content */ }
-        < main className = "main-content" >
-            <Outlet />
-            </main >
+                <nav className="flex flex-col">
+                    {navItems.map((item) => (
+                        <NavLink
+                            key={item.path}
+                            to={item.path}
+                            className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+                        >
+                            <span className="material-symbols-outlined icon">{item.icon}</span>
+                            <span className="label">{item.label}</span>
+                        </NavLink>
+                    ))}
+                </nav>
+            </aside>
 
-        {/* Bottom Nav - Mobile */ }
-        < nav className = "bottom-nav" >
-        {
-            navItems.map((item) => (
-                <NavLink
-                    key={item.path}
-                    to={item.path}
-                    className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-                >
-                    <span className="material-symbols-outlined icon">{item.icon}</span>
-                    <span className="label">{item.label}</span>
-                </NavLink>
-            ))
-        }
-            </nav >
+            {/* Main Content */}
+            <main className="main-content">
+                <Outlet />
+            </main>
 
-        <KoreAIButton isOpen={isChatOpen} onToggle={() => setIsChatOpen(!isChatOpen)} />
-        </div >
+            {/* Bottom Nav - Mobile */}
+            <nav className="bottom-nav">
+                {navItems.map((item) => (
+                    <NavLink
+                        key={item.path}
+                        to={item.path}
+                        className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+                    >
+                        <span className="material-symbols-outlined icon">{item.icon}</span>
+                        <span className="label">{item.label}</span>
+                    </NavLink>
+                ))}
+            </nav>
+
+            <KoreAIButton isOpen={isChatOpen} onToggle={() => setIsChatOpen(!isChatOpen)} />
+        </div>
     );
 }
