@@ -10,12 +10,13 @@ const ALL_NAV_ITEMS = [
     { path: '/it-desk', label: 'IT Desk', icon: 'computer', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT] },
     { path: '/lpo', label: 'Approvals', icon: 'approval', roles: [ROLES.MANAGER, ROLES.HR_ADMIN] },
     { path: '/documents', label: 'Docs', icon: 'folder', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT, ROLES.HR_ADMIN] },
-    { path: '/settings', label: 'Settings', icon: 'settings', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT, ROLES.HR_ADMIN] },
+    // Removed Settings, managing manually
 ];
 
 export default function AppShell() {
     const location = useLocation();
     const { role } = useUser();
+    const [isChatOpen, setIsChatOpen] = React.useState(false);
     const isLoginPage = location.pathname === '/';
 
     if (isLoginPage) {
@@ -23,6 +24,18 @@ export default function AppShell() {
     }
 
     const navItems = ALL_NAV_ITEMS.filter(item => item.roles.includes(role));
+
+    // Custom AI Chat Button to render in Nav
+    const AiChatNavButton = () => (
+        <button
+            onClick={() => setIsChatOpen(!isChatOpen)}
+            className={`nav-item ${isChatOpen ? 'active' : ''}`}
+            style={{ width: '100%', border: 'none', background: 'none', cursor: 'pointer', textAlign: 'left' }}
+        >
+            <span className="material-symbols-outlined icon">smart_toy</span>
+            <span className="label">AI Chat</span>
+        </button>
+    );
 
     return (
         <div className="app-shell">
@@ -44,6 +57,7 @@ export default function AppShell() {
                             <span className="label">{item.label}</span>
                         </NavLink>
                     ))}
+                    <AiChatNavButton />
                 </nav>
             </aside>
 
@@ -64,9 +78,10 @@ export default function AppShell() {
                         <span className="label">{item.label}</span>
                     </NavLink>
                 ))}
+                <AiChatNavButton />
             </nav>
 
-            <KoreAIButton />
+            <KoreAIButton isOpen={isChatOpen} onToggle={() => setIsChatOpen(!isChatOpen)} />
         </div>
     );
 }

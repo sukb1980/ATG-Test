@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import Card from './Card';
 import Button from './Button';
 
-export default function KoreAIButton() {
-    const [isOpen, setIsOpen] = useState(false);
+export default function KoreAIButton({ isOpen, onToggle }) {
     const [messages, setMessages] = useState([
         { id: 1, text: "Hi! I'm your AI Assistant. How can I help you today?", isBot: true }
     ]);
@@ -47,7 +46,7 @@ export default function KoreAIButton() {
                     border: 'none',
                     transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)'
                 }}
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={onToggle}
                 onMouseEnter={e => e.currentTarget.style.transform = isOpen ? 'rotate(90deg) scale(1.05)' : 'scale(1.05)'}
                 onMouseLeave={e => e.currentTarget.style.transform = isOpen ? 'rotate(90deg)' : 'scale(1)'}
                 aria-label="AI Assistant"
