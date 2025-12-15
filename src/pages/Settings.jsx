@@ -173,8 +173,9 @@ export default function Settings() {
                 )}
             </div>
 
+            {/* Since I cannot easily hook into useNavigate from outside the component unless rewriting, I will use window.location.hash for safer ref within map or just component. Wait, this is a component. I should use navigate. */}
             <div className="mt-8 flex justify-center pb-8">
-                <Button variant="text" style={{ color: 'var(--md-sys-color-error)' }} onClick={() => window.location.href = '/'}>
+                <Button variant="text" style={{ color: 'var(--md-sys-color-error)' }} onClick={() => window.location.hash = '#/'}>
                     Sign Out of Account
                 </Button>
             </div>

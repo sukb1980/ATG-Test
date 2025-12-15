@@ -58,7 +58,7 @@ const WIDGETS = [
                     <span className="body-medium">Open Tickets</span>
                     <span className="headline-small text-primary">2</span>
                 </div>
-                <Button variant="outlined" style={{ width: '100%' }} onClick={() => window.location.href = '/it-desk'}>View All</Button>
+                <Button variant="outlined" style={{ width: '100%' }} onClick={() => window.location.hash = '#/it-desk'}>View All</Button>
             </div>
         )
     }

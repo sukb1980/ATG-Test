@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '../components/common/Card';
 import Button from '../components/common/Button';
 
 export default function Login() {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
     const handleLogin = () => {
         setLoading(true);
         setTimeout(() => {
-            window.location.href = '/dashboard';
+            navigate('/dashboard');
         }, 1500);
     };
 
