@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
 import AppShell from './components/layout/AppShell';
 
@@ -23,37 +23,37 @@ import DocumentList from './components/modules/documents/DocumentList';
 function App() {
   return (
     <UserProvider>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<Login />} />
 
           <Route element={<AppShell />}>
             <Route path="/dashboard" element={<Dashboard />} />
 
-            {/* Leave Management Routes */}
+            {/* Leave Module */}
             <Route path="/leave" element={<LeaveList />} />
-            <Route path="/leave/new" element={<LeaveApplicationForm />} />
+            <Route path="/leave/apply" element={<LeaveApplicationForm />} />
             <Route path="/leave/:id" element={<LeaveDetail />} />
 
-            {/* IT Desk Routes */}
+            {/* IT Desk Module */}
             <Route path="/it-desk" element={<ITDesk />} />
             <Route path="/it-desk/new" element={<TicketForm />} />
             <Route path="/it-desk/:id" element={<TicketDetail />} />
 
-            {/* LPO Routes */}
+            {/* LPO Module */}
             <Route path="/lpo" element={<LPOList />} />
             <Route path="/lpo/:id" element={<LPODetail />} />
 
-            {/* Documents Routes */}
+            {/* Documents */}
             <Route path="/documents" element={<DocumentList />} />
 
-            {/* Settings Route */}
+            {/* Settings */}
             <Route path="/settings" element={<Settings />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </UserProvider>
   );
 }
