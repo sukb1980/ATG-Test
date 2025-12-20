@@ -20,9 +20,9 @@ export default function DocumentList() {
         <div className="p-4 fade-in h-full flex flex-col">
             <h1 className="headline-small text-primary mb-6">Documents & Policies</h1>
 
-            <div className="flex flex-col md:flex-row gap-6 h-full" style={{ minHeight: '600px' }}>
+            <div className="flex flex-col gap-6 h-full">
                 {/* List */}
-                <div className="w-full md:w-1/3 flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-3">
                     <div className="flex gap-2 mb-2">
                         <Button
                             variant={filter === 'Recent' ? 'filled' : 'text'}
@@ -65,36 +65,6 @@ export default function DocumentList() {
                             </div>
                         </Card>
                     ))}
-                </div>
-
-                {/* Preview Pane */}
-                <div className="flex-1" style={{ minHeight: '400px' }}>
-                    <Card className="h-full flex flex-col" style={{ padding: 0, overflow: 'hidden', height: '100%' }}>
-                        <div className="p-4 border-b flex justify-between items-center bg-gray-50">
-                            <h2 className="title-medium truncate pr-4">{selectedDoc.title}</h2>
-                            <div className="flex gap-2 shrink-0">
-                                <Button variant="outlined" style={{ padding: '8px' }}>
-                                    <span className="material-symbols-outlined">download</span>
-                                </Button>
-                                <Button variant="outlined" style={{ padding: '8px' }}>
-                                    <span className="material-symbols-outlined">open_in_new</span>
-                                </Button>
-                            </div>
-                        </div>
-                        <div className="flex-1 bg-gray-100 flex items-center justify-center p-4" style={{ position: 'relative' }}>
-                            <img
-                                src="https://placehold.co/600x800/png?text=Document+Preview"
-                                alt="Document Preview"
-                                style={{
-                                    maxWidth: '100%',
-                                    maxHeight: '100%',
-                                    objectFit: 'contain',
-                                    boxShadow: 'var(--shadow-md)',
-                                    borderRadius: '4px'
-                                }}
-                            />
-                        </div>
-                    </Card>
                 </div>
             </div>
         </div>
