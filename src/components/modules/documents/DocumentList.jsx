@@ -11,6 +11,10 @@ const DOCS = [
 
 export default function DocumentList() {
     const [selectedDoc, setSelectedDoc] = useState(DOCS[0]);
+    const [filter, setFilter] = useState('Recent');
+
+    // Mock filtering logic
+    const filteredDocs = filter === 'Recent' ? DOCS.slice(0, 3) : DOCS;
 
     return (
         <div className="p-4 fade-in h-full flex flex-col">
@@ -20,15 +24,28 @@ export default function DocumentList() {
                 {/* List */}
                 <div className="w-full md:w-1/3 flex flex-col gap-3">
                     <div className="flex gap-2 mb-2">
-                        <Button variant="tonal" style={{ flex: 1 }}>Recent</Button>
-                        <Button variant="text" style={{ flex: 1 }}>All Files</Button>
+                        <Button
+                            variant={filter === 'Recent' ? 'filled' : 'text'}
+                            style={{ flex: 1 }}
+                            onClick={() => setFilter('Recent')}
+                        >
+                            Recent
+                        </Button>
+                        <Button
+                            variant={filter === 'All' ? 'filled' : 'text'}
+                            style={{ flex: 1 }}
+                            onClick={() => setFilter('All')}
+                        >
+                            All Files
+                        </Button>
                     </div>
-                    {DOCS.map(doc => (
+                    {filteredDocs.map(doc => (
                         <Card
                             key={doc.id}
                             style={{
-                                border: selectedDoc.id === doc.id ? '1px solid var(--md-sys-color-primary)' : '1px solid var(--md-sys-color-outline-variant)',
-                                backgroundColor: selectedDoc.id === doc.id ? 'var(--md-sys-color-primary-container)' : 'var(--md-sys-color-surface)'
+                                border: selectedDoc.id === doc.id ? '2px solid var(--md-sys-color-primary)' : '1px solid var(--md-sys-color-outline-variant)',
+                                backgroundColor: selectedDoc.id === doc.id ? 'var(--md-sys-color-primary-container)' : 'var(--md-sys-color-surface)',
+                                cursor: 'pointer'
                             }}
                             onClick={() => setSelectedDoc(doc)}
                         >
@@ -41,7 +58,7 @@ export default function DocumentList() {
                                 }}>
                                     <span className="material-symbols-outlined">{doc.type === 'PDF' ? 'picture_as_pdf' : 'image'}</span>
                                 </div>
-                                <div>
+                                <div style={{ overflow: 'hidden' }}>
                                     <p className="body-medium font-bold truncate">{doc.title}</p>
                                     <p className="label-small text-secondary">{doc.size} • {doc.updated}</p>
                                 </div>
@@ -52,10 +69,10 @@ export default function DocumentList() {
 
                 {/* Preview Pane */}
                 <div className="flex-1" style={{ minHeight: '400px' }}>
-                    <Card className="h-full flex flex-col" style={{ padding: 0, overflow: 'hidden' }}>
+                    <Card className="h-full flex flex-col" style={{ padding: 0, overflow: 'hidden', height: '100%' }}>
                         <div className="p-4 border-b flex justify-between items-center bg-gray-50">
-                            <h2 className="title-medium">{selectedDoc.title}</h2>
-                            <div className="flex gap-2">
+                            <h2 className="title-medium truncate pr-4">{selectedDoc.title}</h2>
+                            <div className="flex gap-2 shrink-0">
                                 <Button variant="outlined" style={{ padding: '8px' }}>
                                     <span className="material-symbols-outlined">download</span>
                                 </Button>
@@ -64,14 +81,18 @@ export default function DocumentList() {
                                 </Button>
                             </div>
                         </div>
-                        <div className="flex-1 flex items-center justify-center bg-gray-100 p-8">
-                            <div className="text-center text-secondary">
-                                <span className="material-symbols-outlined" style={{ fontSize: '64px', marginBottom: '16px' }}>
-                                    {selectedDoc.type === 'PDF' ? 'picture_as_pdf' : 'image'}
-                                </span>
-                                <p className="headline-small">Preview</p>
-                                <p className="body-medium">Document preview placeholder.</p>
-                            </div>
+                        <div className="flex-1 bg-gray-100 flex items-center justify-center p-4" style={{ position: 'relative' }}>
+                            <img
+                                src="https://placehold.co/600x800/png?text=Document+Preview"
+                                alt="Document Preview"
+                                style={{
+                                    maxWidth: '100%',
+                                    maxHeight: '100%',
+                                    objectFit: 'contain',
+                                    boxShadow: 'var(--shadow-md)',
+                                    borderRadius: '4px'
+                                }}
+                            />
                         </div>
                     </Card>
                 </div>
