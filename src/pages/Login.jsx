@@ -28,7 +28,7 @@ export default function Login() {
                         <span className="material-symbols-outlined" style={{ fontSize: '32px', color: 'white' }}>business_center</span>
                     </div>
                     <h1 className="headline-small font-bold text-gray-900">Sign in to ATG</h1>
-                    <p className="body-medium text-secondary mt-2">Welcome back! Please enter your details.</p>
+                    {/* Welcome message removed */}
                 </div>
 
                 <Card>
