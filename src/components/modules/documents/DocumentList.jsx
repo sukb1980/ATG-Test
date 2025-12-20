@@ -51,7 +51,7 @@ export default function DocumentList() {
                 </div>
 
                 {/* Preview Pane */}
-                <div className="flex-1">
+                <div className="flex-1" style={{ minHeight: '400px' }}>
                     <Card className="h-full flex flex-col" style={{ padding: 0, overflow: 'hidden' }}>
                         <div className="p-4 border-b flex justify-between items-center bg-gray-50">
                             <h2 className="title-medium">{selectedDoc.title}</h2>
@@ -69,8 +69,8 @@ export default function DocumentList() {
                                 <span className="material-symbols-outlined" style={{ fontSize: '64px', marginBottom: '16px' }}>
                                     {selectedDoc.type === 'PDF' ? 'picture_as_pdf' : 'image'}
                                 </span>
-                                <p className="headline-small">Preview not available</p>
-                                <p className="body-medium">This is a mockup. In a real app, the PDF viewer would be here.</p>
+                                <p className="headline-small">Preview</p>
+                                <p className="body-medium">Document preview placeholder.</p>
                             </div>
                         </div>
                     </Card>

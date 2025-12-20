@@ -57,9 +57,9 @@ export default function ITDesk() {
                                     <div style={{ width: '40px', height: '40px', backgroundColor: 'var(--md-sys-color-secondary-container)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                                         <span className="material-symbols-outlined text-primary">confirmation_number</span>
                                     </div>
-                                    <div className="truncate">
-                                        <h3 className="title-small font-bold truncate">#{ticket.id} - {ticket.subject}</h3>
-                                        <p className="body-small text-secondary truncate">{ticket.category} • Last updated {ticket.updated}</p>
+                                    <div className="w-full">
+                                        <h3 className="title-small font-bold" style={{ whiteSpace: 'normal', wordBreak: 'break-word' }}>#{ticket.id} - {ticket.subject}</h3>
+                                        <p className="body-small text-secondary" style={{ whiteSpace: 'normal', wordBreak: 'break-word' }}>{ticket.category} • Last updated {ticket.updated}</p>
                                     </div>
                                 </div>
                                 <div className="self-end md:self-auto">
