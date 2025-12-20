@@ -126,7 +126,56 @@
 
 /* Additional Helper Classes if needed */
 .truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* Missing Utilities from Code Audit */
+.gap-3 {
+    gap: 12px;
+}
+
+.pb-2 {
+    padding-bottom: 8px;
+}
+
+/* Color Utilities (Tailwind Emulation) */
+.bg-blue-50 {
+    background-color: #eff6ff;
+}
+
+.bg-yellow-50 {
+    background-color: #fefce8;
+}
+
+.bg-gray-50 {
+    background-color: #f9fafb;
+}
+
+.bg-gray-100 {
+    background-color: #f3f4f6;
+}
+
+.text-gray-900 {
+    color: #111827;
+}
+
+.text-yellow-700 {
+    color: #a16207;
+}
+
+.border-gray-200 {
+    border-color: #e5e7eb;
+}
+
+.border-yellow-200 {
+    border-color: #fde047;
+}
+
+.divide-y>*+* {
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.divide-gray-100>*+* {
+    border-color: #f3f4f6;
 }
