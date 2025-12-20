@@ -133,6 +133,20 @@ body {
 }
 
 /* Utilities */
+html {
+  font-size: 100%;
+  /* 16px base */
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+select,
+textarea,
+button {
+  font-size: 16px;
+  /* Prevents auto-zoom on iOS */
+}
+
 .flex {
   display: flex;
 }

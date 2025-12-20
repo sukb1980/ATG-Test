@@ -83,7 +83,7 @@ export default function Dashboard() {
                     <p className="body-medium text-secondary">Here's a summary of your workspace.</p>
                 </div>
                 <div className="flex gap-3">
-                    <Button variant="tonal" onClick={() => navigate('/')} style={{ borderRadius: '50%', width: '40px', height: '40px', padding: 0 }} title="Logout">
+                    <Button variant="text" onClick={() => navigate('/')} style={{ borderRadius: '50%', width: '40px', height: '40px', padding: 0 }} title="Logout">
                         <span className="material-symbols-outlined">logout</span>
                     </Button>
                     <Button variant="filled" onClick={() => navigate('/settings')} style={{ borderRadius: '50%', width: '40px', height: '40px', padding: 0 }} title="Profile">

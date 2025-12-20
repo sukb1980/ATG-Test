@@ -21,16 +21,16 @@ export default function LPOList() {
 
     return (
         <div className="p-4 fade-in">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                 <div>
                     <h1 className="headline-small text-primary">LPO Approvals</h1>
                     <p className="body-medium text-secondary">Review and approve purchase orders.</p>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 w-full md:w-auto overflow-x-auto pb-1">
                     {selected.length > 0 && (
-                        <Button variant="filled">Approve Selected ({selected.length})</Button>
+                        <Button variant="filled" className="whitespace-nowrap">Approve Selected ({selected.length})</Button>
                     )}
-                    <Button variant="tonal"><span className="material-symbols-outlined">filter_list</span> Filter</Button>
+                    <Button variant="tonal" className="whitespace-nowrap"><span className="material-symbols-outlined">filter_list</span> Filter</Button>
                 </div>
             </div>
 
@@ -44,12 +44,12 @@ export default function LPOList() {
                             style={{ width: '20px', height: '20px' }}
                         />
                         <div className="flex-1 cursor-pointer" onClick={() => navigate(`/lpo/${lpo.id}`)}>
-                            <div className="flex justify-between items-center">
+                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
                                 <div>
                                     <h3 className="title-medium font-bold">{lpo.vendor}</h3>
                                     <p className="body-small text-secondary">{lpo.id} • {lpo.items} Items • {lpo.date}</p>
                                 </div>
-                                <div className="text-right">
+                                <div className="flex flex-row md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-4 md:gap-0">
                                     <p className="title-medium font-bold">{lpo.amount}</p>
                                     <Badge color={lpo.status === 'Approved' ? 'success' : 'warning'}>{lpo.status}</Badge>
                                 </div>

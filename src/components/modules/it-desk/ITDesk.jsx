@@ -22,12 +22,12 @@ export default function ITDesk() {
 
     return (
         <div className="p-4 fade-in">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                 <div>
                     <h1 className="headline-small text-primary">IT Service Desk</h1>
                     <p className="body-medium text-secondary">How can we help you today?</p>
                 </div>
-                <Button onClick={() => navigate('/it-desk/new')}>
+                <Button onClick={() => navigate('/it-desk/new')} className="w-full md:w-auto">
                     <span className="material-symbols-outlined">add</span>
                     Raise Ticket
                 </Button>
@@ -52,17 +52,19 @@ export default function ITDesk() {
                 <div className="flex flex-col gap-3">
                     {TICKETS.map(ticket => (
                         <Card key={ticket.id} onClick={() => navigate(`/it-desk/${ticket.id}`)} className="cursor-pointer hover:border-primary">
-                            <div className="flex justify-between items-center">
-                                <div className="flex items-center gap-4">
-                                    <div style={{ width: '40px', height: '40px', backgroundColor: 'var(--md-sys-color-secondary-container)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                                <div className="flex items-center gap-4 w-full md:w-auto">
+                                    <div style={{ width: '40px', height: '40px', backgroundColor: 'var(--md-sys-color-secondary-container)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                                         <span className="material-symbols-outlined text-primary">confirmation_number</span>
                                     </div>
-                                    <div>
-                                        <h3 className="title-small font-bold">#{ticket.id} - {ticket.subject}</h3>
-                                        <p className="body-small text-secondary">{ticket.category} • Last updated {ticket.updated}</p>
+                                    <div className="truncate">
+                                        <h3 className="title-small font-bold truncate">#{ticket.id} - {ticket.subject}</h3>
+                                        <p className="body-small text-secondary truncate">{ticket.category} • Last updated {ticket.updated}</p>
                                     </div>
                                 </div>
-                                <Badge color={ticket.status === 'Resolved' ? 'success' : 'primary'}>{ticket.status}</Badge>
+                                <div className="self-end md:self-auto">
+                                    <Badge color={ticket.status === 'Resolved' ? 'success' : 'primary'}>{ticket.status}</Badge>
+                                </div>
                             </div>
                         </Card>
                     ))}

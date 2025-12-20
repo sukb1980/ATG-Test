@@ -18,24 +18,24 @@ export default function LeaveList() {
 
     return (
         <div className="p-4 fade-in">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                 <div>
                     <h1 className="headline-small text-primary">Leave Management</h1>
                     <p className="body-medium text-secondary">View and manage your time off.</p>
                 </div>
-                <Button onClick={() => navigate('/leave/new')}>
+                <Button onClick={() => navigate('/leave/apply')} className="w-full md:w-auto">
                     <span className="material-symbols-outlined">add</span>
                     Apply Leave
                 </Button>
             </div>
 
-            <div className="flex gap-2 mb-4 overflow-x-auto pb-2">
+            <div className="flex gap-2 mb-4 overflow-x-auto pb-2 no-scrollbar">
                 {['All', 'Pending', 'Approved', 'Rejected'].map(status => (
                     <Button
                         key={status}
                         variant={filter === status ? 'filled' : 'tonal'}
                         onClick={() => setFilter(status)}
-                        style={{ padding: '8px 16px', height: '36px' }}
+                        style={{ padding: '8px 16px', height: '36px', whiteSpace: 'nowrap' }}
                     >
                         {status}
                     </Button>
@@ -45,19 +45,28 @@ export default function LeaveList() {
             <div className="flex flex-col gap-4">
                 {filteredLeaves.map(leave => (
                     <Card key={leave.id} onClick={() => navigate(`/leave/${leave.id}`)}>
-                        <div className="flex justify-between items-start">
-                            <div>
-                                <h3 className="title-medium font-bold">{leave.type}</h3>
+                        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                            <div className="w-full md:w-auto">
+                                <div className="flex justify-between items-center md:block">
+                                    <h3 className="title-medium font-bold">{leave.type}</h3>
+                                    <div className="md:hidden">
+                                        <Badge color={leave.status === 'Approved' ? 'success' : leave.status === 'Rejected' ? 'error' : 'warning'}>
+                                            {leave.status}
+                                        </Badge>
+                                    </div>
+                                </div>
                                 <p className="body-small text-secondary" style={{ marginTop: '4px' }}>
                                     {leave.from} - {leave.to} • {leave.days} Days
                                 </p>
-                                <p className="body-small text-secondary" style={{ marginTop: '4px', fontStyle: 'italic' }}>
+                                <p className="body-small text-secondary truncate" style={{ marginTop: '4px', fontStyle: 'italic', maxWidth: '100%' }}>
                                     "{leave.reason}"
                                 </p>
                             </div>
-                            <Badge color={leave.status === 'Approved' ? 'success' : leave.status === 'Rejected' ? 'error' : 'warning'}>
-                                {leave.status}
-                            </Badge>
+                            <div className="hidden md:block">
+                                <Badge color={leave.status === 'Approved' ? 'success' : leave.status === 'Rejected' ? 'error' : 'warning'}>
+                                    {leave.status}
+                                </Badge>
+                            </div>
                         </div>
                     </Card>
                 ))}
