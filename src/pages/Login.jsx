@@ -15,7 +15,7 @@ export default function Login() {
     };
 
     return (
-        <div className="flex items-center justify-center h-screen bg-gray-50" style={{ backgroundColor: 'var(--md-sys-color-background)' }}>
+        <div className="flex items-center justify-center h-screen">
             <div style={{ width: '100%', maxWidth: '400px', padding: '24px' }}>
                 <div className="text-center mb-8">
                     <div style={{

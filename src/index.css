@@ -1,86 +1,105 @@
 @import './responsive.css';
 
 :root {
-  /* CLEAN & MINIMALIST TOKENS */
+  /* MODERN VIBRANT TOKENS */
 
-  /* Primary Brand Colors - Professional Blue/Indigo */
-  --md-sys-color-primary: #3b82f6;
-  /* Modern Blue */
+  /* Primary Brand Colors - Indigo/Violet */
+  --md-sys-color-primary: #6366f1;
+  /* Indigo 500 */
   --md-sys-color-on-primary: #FFFFFF;
-  --md-sys-color-primary-container: #eff6ff;
-  --md-sys-color-on-primary-container: #1e40af;
+  --md-sys-color-primary-container: #e0e7ff;
+  /* Indigo 100 */
+  --md-sys-color-on-primary-container: #3730a3;
+  /* Indigo 800 */
 
   /* Secondary/Neutral */
   --md-sys-color-secondary: #64748b;
-  /* Slate */
+  /* Slate 500 */
   --md-sys-color-on-secondary: #FFFFFF;
   --md-sys-color-secondary-container: #f1f5f9;
+  /* Slate 100 */
   --md-sys-color-on-secondary-container: #0f172a;
+  /* Slate 900 */
 
-  /* Tertiary/Accent (AI) */
-  --md-sys-color-tertiary: #0ea5e9;
+  /* Tertiary/Accent (Teal) */
+  --md-sys-color-tertiary: #14b8a6;
+  /* Teal 500 */
   --md-sys-color-on-tertiary: #FFFFFF;
-  --md-sys-color-tertiary-container: #e0f2fe;
-  --md-sys-color-on-tertiary-container: #0369a1;
+  --md-sys-color-tertiary-container: #ccfbf1;
+  /* Teal 100 */
+  --md-sys-color-on-tertiary-container: #115e59;
+  /* Teal 800 */
 
-  /* Backgrounds */
+  /* Surface & Backgrounds */
   --md-sys-color-background: #f8fafc;
-  /* Very light slate gray, almost white */
-  --md-sys-color-on-background: #0f172a;
+  --md-sys-color-on-background: #1e293b;
 
-  --md-sys-color-surface: #ffffff;
-  --md-sys-color-on-surface: #0f172a;
+  --md-sys-color-surface: rgba(255, 255, 255, 0.7);
+  /* Glass effect */
+  --md-sys-color-surface-solid: #ffffff;
+  --md-sys-color-on-surface: #1e293b;
 
-  --md-sys-color-surface-variant: #f1f5f9;
+  --md-sys-color-surface-variant: rgba(241, 245, 249, 0.6);
   --md-sys-color-on-surface-variant: #475569;
 
   --md-sys-color-outline: #cbd5e1;
   --md-sys-color-outline-variant: #e2e8f0;
 
+  /* Glassmorphism */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.5);
+  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --glass-blur: blur(12px);
+
   /* Status Colors */
-  --md-sys-color-success: #22c55e;
+  --md-sys-color-success: #10b981;
   --md-sys-color-warning: #f59e0b;
   --md-sys-color-error: #ef4444;
 
-  /* Typography - Clean Sans */
+  /* Typography */
   --font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
-  --layout-sidebar-width: 256px;
-  --layout-header-height: 64px;
+  --layout-sidebar-width: 260px;
+  --layout-header-height: 70px;
 
   /* Effects */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --md-sys-color-primary: #60a5fa;
-    --md-sys-color-on-primary: #0f172a;
-    --md-sys-color-primary-container: #1e3a8a;
-    --md-sys-color-on-primary-container: #eff6ff;
+    --md-sys-color-primary: #818cf8;
+    /* Indigo 400 */
+    --md-sys-color-on-primary: #1e1b4b;
+    --md-sys-color-primary-container: #3730a3;
+    --md-sys-color-on-primary-container: #e0e7ff;
 
     --md-sys-color-secondary: #94a3b8;
     --md-sys-color-on-secondary: #0f172a;
 
     --md-sys-color-background: #0f172a;
     /* Slate 900 */
-    --md-sys-color-on-background: #f8fafc;
+    --md-sys-color-on-background: #f1f5f9;
 
-    --md-sys-color-surface: #1e293b;
-    /* Slate 800 */
-    --md-sys-color-on-surface: #f8fafc;
+    --md-sys-color-surface: rgba(30, 41, 59, 0.7);
+    /* Slate 800 Glass */
+    --md-sys-color-surface-solid: #1e293b;
+    --md-sys-color-on-surface: #f1f5f9;
 
-    --md-sys-color-surface-variant: #334155;
+    --md-sys-color-surface-variant: rgba(51, 65, 85, 0.6);
     --md-sys-color-on-surface-variant: #cbd5e1;
 
-    --md-sys-color-outline: #475569;
+    --md-sys-color-outline: #334155;
+    --md-sys-color-outline-variant: #475569;
+
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -95,18 +114,27 @@ body {
   color: var(--md-sys-color-on-background);
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
+
+  /* Mesh Gradient Background */
+  background-image:
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(20, 184, 166, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(236, 72, 153, 0.15) 0px, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 /* Typography Classes */
 .headline-medium {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: -0.025em;
-  line-height: 32px;
+  line-height: 1.2;
 }
 
 .headline-small {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.025em;
 }
@@ -114,11 +142,13 @@ body {
 .title-medium {
   font-size: 16px;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .body-medium {
   font-size: 14px;
   font-weight: 400;
+  line-height: 1.5;
 }
 
 .body-small {
@@ -129,13 +159,14 @@ body {
 .label-small {
   font-size: 12px;
   font-weight: 500;
+  letter-spacing: 0.01em;
   color: var(--md-sys-color-on-surface-variant);
+  text-transform: uppercase;
 }
 
 /* Utilities */
 html {
   font-size: 100%;
-  /* 16px base */
   -webkit-text-size-adjust: 100%;
 }
 
@@ -143,8 +174,7 @@ input,
 select,
 textarea,
 button {
-  font-size: 16px;
-  /* Prevents auto-zoom on iOS */
+  font-size: 14px;
 }
 
 .flex {
@@ -163,6 +193,10 @@ button {
   justify-content: space-between;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .gap-2 {
   gap: 8px;
 }
@@ -171,8 +205,16 @@ button {
   gap: 16px;
 }
 
+.gap-6 {
+  gap: 24px;
+}
+
 .p-4 {
   padding: 24px;
+}
+
+.p-6 {
+  padding: 32px;
 }
 
 .w-full {
@@ -195,11 +237,15 @@ button {
   color: var(--md-sys-color-error);
 }
 
+.text-success {
+  color: var(--md-sys-color-success);
+}
+
 /* Animation Utils */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(5px);
+    transform: translateY(10px);
   }
 
   to {
@@ -208,14 +254,49 @@ button {
   }
 }
 
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
+  animation: fadeIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 button {
   cursor: pointer;
   border: none;
   font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.98);
 }
 
 /* Material Symbols Utility */
@@ -232,5 +313,6 @@ button {
   word-wrap: normal;
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }

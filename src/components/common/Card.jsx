@@ -7,18 +7,20 @@ export default function Card({ children, className, style, padding = '24px', onC
             onClick={onClick}
             style={{
                 backgroundColor: 'var(--md-sys-color-surface)',
-                borderRadius: 'var(--radius-md)',
-                border: '1px solid var(--md-sys-color-outline-variant)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                borderRadius: 'var(--radius-lg)',
+                border: 'var(--glass-border)',
                 boxShadow: 'var(--shadow-sm)',
                 padding: padding,
-                transition: 'all 0.2s ease',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 cursor: onClick ? 'pointer' : 'default',
                 ...style
             }}
             onMouseEnter={(e) => {
                 if (onClick) {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = 'var(--shadow-lg)';
                     e.currentTarget.style.borderColor = 'var(--md-sys-color-primary)';
                 }
             }}
@@ -26,7 +28,7 @@ export default function Card({ children, className, style, padding = '24px', onC
                 if (onClick) {
                     e.currentTarget.style.transform = 'translateY(0)';
                     e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
-                    e.currentTarget.style.borderColor = 'var(--md-sys-color-outline-variant)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
                 }
             }}
         >
