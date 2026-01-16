@@ -1,81 +1,63 @@
 import React from 'react';
 import Card from '../components/common/Card';
+import HeroChatInterface from '../components/common/HeroChatInterface';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
 import clsx from 'clsx';
 
 const DEPARTMENTS = [
-    { title: 'HR Administration', icon: 'diversity_3', path: '/hr-admin', color: 'bg-[var(--pastel-rose)]', iconClass: 'icon-gradient-rose', desc: 'Onboarding, Offboarding, & Profile Management' },
-    { title: 'Sales', icon: 'monitoring', path: '/sales', color: 'bg-[var(--pastel-blue)]', iconClass: 'icon-gradient-blue', desc: 'Pipeline, Revenue, & AI Outreach' },
-    { title: 'Marketing', icon: 'ads_click', path: '/marketing', color: 'bg-[var(--pastel-purple)]', iconClass: 'icon-gradient-purple', desc: 'Campaigns, SEO, & Content Generation' },
-    { title: 'Finance', icon: 'account_balance_wallet', path: '/finance', color: 'bg-[var(--pastel-green)]', iconClass: 'icon-gradient-green', desc: 'Invoices, Budget, & Risk Analysis' },
-    { title: 'Engineering', icon: 'terminal', path: '/engineering', color: 'bg-[var(--pastel-orange)]', iconClass: 'icon-gradient-orange', desc: 'Code Analysis, Docs, & Support Tickets' },
-    { title: 'Legal', icon: 'gavel', path: '/legal', color: 'bg-[var(--pastel-gold)]', iconClass: 'icon-gradient-gold', desc: 'Contracts, Compliance, & Regulations' },
+    { title: 'HR Administration', icon: 'diversity_3', path: '/hr-admin', color: 'bg-white', iconColor: 'text-rose-500', bgElement: 'bg-rose-50', desc: 'Onboarding, Offboarding, & Profile Management' },
+    { title: 'Sales', icon: 'monitoring', path: '/sales', color: 'bg-white', iconColor: 'text-blue-500', bgElement: 'bg-blue-50', desc: 'Pipeline, Revenue, & AI Outreach' },
+    { title: 'Marketing', icon: 'ads_click', path: '/marketing', color: 'bg-white', iconColor: 'text-purple-500', bgElement: 'bg-purple-50', desc: 'Campaigns, SEO, & Content Generation' },
+    { title: 'Finance', icon: 'account_balance_wallet', path: '/finance', color: 'bg-white', iconColor: 'text-emerald-500', bgElement: 'bg-emerald-50', desc: 'Invoices, Budget, & Risk Analysis' },
+    { title: 'Engineering', icon: 'terminal', path: '/engineering', color: 'bg-white', iconColor: 'text-orange-500', bgElement: 'bg-orange-50', desc: 'Code Analysis, Docs, & Support Tickets' },
+    { title: 'Legal', icon: 'gavel', path: '/legal', color: 'bg-white', iconColor: 'text-amber-600', bgElement: 'bg-amber-50', desc: 'Contracts, Compliance, & Regulations' },
 ];
 
 export default function Dashboard() {
     const navigate = useNavigate();
-    const { role } = useUser();
 
     return (
-        <div className="flex flex-col gap-8 fade-in pb-20">
-            {/* Header / Welcome */}
-            <header className="relative overflow-hidden rounded-3xl p-10 text-white shadow-2xl skew-fix transform hover:scale-[1.01] transition-transform duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] z-0"></div>
-                {/* Decorative background elements */}
-                <div className="absolute top-[-50px] right-[-50px] w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-[-20px] left-[-20px] w-40 h-40 bg-gold-500/5 rounded-full blur-2xl"></div>
+        <div className="flex flex-col gap-6 fade-in pb-20 max-w-7xl mx-auto">
 
-                <div className="absolute top-0 right-0 p-8 opacity-5 transform translate-x-10 translate-y-[-10px]">
-                    <span className="material-symbols-outlined text-[200px]">hub</span>
-                </div>
-
-                <div className="relative z-10 flex flex-col gap-2">
-                    <span className="label-small text-blue-200 tracking-wider flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                        ENTERPRISE DASHBOARD
-                    </span>
-                    <h1 className="headline-large font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
-                        Welcome, Alexander
-                    </h1>
-                    <p className="body-large text-blue-100 max-w-xl opacity-90 font-light">
-                        Access all your enterprise modules, AI agents, and daily metrics from one central hub.
-                    </p>
-                </div>
-            </header>
+            {/* AI Hero Section */}
+            <section className="mb-4">
+                <h1 className="headline-small font-bold text-slate-800 mb-4 px-1">Enterprise Command Center</h1>
+                <HeroChatInterface />
+            </section>
 
             {/* Department Grid */}
             <section>
-                <div className="flex justify-between items-end mb-6">
-                    <h2 className="headline-small text-primary font-bold flex items-center gap-2">
-                        <span className="material-symbols-outlined text-secondary">grid_view</span>
-                        Enterprise Modules
+                <div className="flex justify-between items-end mb-6 px-1">
+                    <h2 className="title-medium text-slate-600 font-semibold flex items-center gap-2">
+                        <span className="material-symbols-outlined text-slate-400">apps</span>
+                        Applications & Modules
                     </h2>
-                    <span className="body-small text-secondary">Select a department to access AI agents</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {DEPARTMENTS.map((dept) => (
                         <Card
                             key={dept.title}
-                            className={`group cursor-pointer hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl ${dept.color}`}
+                            className={`group cursor-pointer border border-slate-100 hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg ${dept.color}`}
                             onClick={() => navigate(dept.path)}
-                            padding="24px"
-                            style={{ border: '1px solid rgba(255,255,255,0.5)' }}
+                            padding="0"
                         >
-                            <div className="flex flex-col gap-4 h-full">
-                                <div className="flex justify-between items-start">
-                                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-white/60 shadow-sm backdrop-blur-sm">
-                                        <span className={clsx("material-symbols-outlined text-[48px]", dept.iconClass)}>{dept.icon}</span>
+                            <div className="relative p-6 h-full flex flex-col gap-3 overflow-hidden rounded-2xl">
+                                {/* Decorative BG */}
+                                <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-60 translate-x-10 -translate-y-10 ${dept.bgElement}`}></div>
+
+                                <div className="flex justify-between items-start relative z-10">
+                                    <div className={`w-14 h-14 rounded-2xl ${dept.bgElement} flex items-center justify-center`}>
+                                        <span className={`material-symbols-outlined text-[32px] ${dept.iconColor}`}>{dept.icon}</span>
                                     </div>
-                                    <div className="w-12 h-12 rounded-full bg-white/50 flex items-center justify-center delay-100 transition-all group-hover:bg-primary group-hover:text-white">
-                                        <span className="material-symbols-outlined text-[24px]">arrow_forward</span>
+                                    <div className="w-8 h-8 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
+                                        <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
                                     </div>
                                 </div>
 
-                                <div>
-                                    <h3 className="title-medium font-bold mb-2 text-slate-800">{dept.title}</h3>
-                                    <p className="body-medium text-slate-600 leading-relaxed font-medium">
+                                <div className="relative z-10 mt-2">
+                                    <h3 className="title-medium font-bold mb-1 text-slate-800">{dept.title}</h3>
+                                    <p className="body-small text-slate-500 leading-relaxed font-medium">
                                         {dept.desc}
                                     </p>
                                 </div>
