@@ -67,6 +67,112 @@
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/* LEGACY SUPPORT (Required for Login.jsx, KoreAIButton.jsx, and older components) */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  /* Colors mapped to new theme where possible, or kept legacy for specific UI */
+  --md-sys-color-primary: #0f172a;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #1e293b;
+  --md-sys-color-on-primary-container: #f8fafc;
+
+  --md-sys-color-secondary: #00f3ff;
+  /* Neon Blue override for legacy secondary */
+  --md-sys-color-on-secondary: #000000;
+  --md-sys-color-tertiary: #bf00ff;
+  /* Neon Purple override */
+
+  --md-sys-color-surface: rgba(15, 23, 42, 0.6);
+  --md-sys-color-surface-variant: rgba(30, 41, 59, 0.6);
+  --md-sys-color-on-surface-variant: #94a3b8;
+  --md-sys-color-outline-variant: #334155;
+  --md-sys-color-error: #ef4444;
+
+  /* Utilities */
+  --glass-blur: blur(12px);
+  --radius-lg: 16px;
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+/* Animation Utilities from previous build */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Glass Card - Legacy Class */
+.glass-card {
+  background: var(--md-sys-color-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-lg);
+}
+
+/* Typography Helpers used in Login.jsx */
+.headline-medium {
+  @apply text-3xl font-bold text-slate-100;
+}
+
+.title-medium {
+  @apply text-xl font-medium text-slate-200;
+}
+
+.body-medium {
+  @apply text-base text-slate-400;
+}
+
+.body-small {
+  @apply text-sm text-slate-500;
+}
+
+.label-small {
+  @apply text-xs font-bold uppercase tracking-wider text-slate-500;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 /* Material Symbols */
 .material-symbols-outlined {
   font-family: 'Material Symbols Rounded';
