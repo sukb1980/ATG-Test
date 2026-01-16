@@ -44,15 +44,15 @@ export default function DepartmentLayout({ title, description, agents = [], metr
                         {agents.map((agent, index) => (
                             <Card
                                 key={index}
-                                className="hover:border-primary group cursor-pointer transition-all duration-300"
+                                className="hover:border-cyan-500/50 group cursor-pointer transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1"
                                 padding="20px"
                             >
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                                        <span className="material-symbols-outlined text-primary group-hover:text-white">smart_toy</span>
+                                    <div className="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center shadow-sm">
+                                        <span className="material-symbols-outlined icon-gradient-cyan text-[28px]">smart_toy</span>
                                     </div>
                                     <div className="flex flex-col gap-1">
-                                        <h3 className="title-medium font-bold group-hover:text-primary transition-colors">{agent.name}</h3>
+                                        <h3 className="title-medium font-bold group-hover:text-cyan-700 transition-colors">{agent.name}</h3>
                                         <p className="body-medium text-secondary line-clamp-2">{agent.desc}</p>
                                     </div>
                                 </div>

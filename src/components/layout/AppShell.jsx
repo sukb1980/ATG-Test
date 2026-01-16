@@ -5,15 +5,14 @@ import { useUser, ROLES } from '../../context/UserContext';
 import './AppShell.css';
 
 const ALL_NAV_ITEMS = [
-    { path: '/dashboard', label: 'Overview', icon: 'dashboard', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT, ROLES.HR_ADMIN] },
-    { path: '/hr-admin', label: 'HR Admin', icon: 'people', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.HR_ADMIN] },
-    { path: '/sales', label: 'Sales', icon: 'point_of_sale', roles: [ROLES.EMPLOYEE, ROLES.MANAGER] },
-    { path: '/marketing', label: 'Marketing', icon: 'campaign', roles: [ROLES.EMPLOYEE, ROLES.MANAGER] },
-    { path: '/finance', label: 'Finance', icon: 'payments', roles: [ROLES.MANAGER, ROLES.HR_ADMIN] },
-    { path: '/engineering', label: 'Engineering', icon: 'code', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT] },
-    { path: '/legal', label: 'Legal', icon: 'gavel', roles: [ROLES.MANAGER, ROLES.HR_ADMIN] },
-    // Keeping Legacy IT Desk for support
-    { path: '/it-desk', label: 'IT Desk', icon: 'support_agent', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT] },
+    { path: '/dashboard', label: 'Overview', icon: 'dashboard', color: '#3b82f6', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT, ROLES.HR_ADMIN] },
+    { path: '/hr-admin', label: 'HR Admin', icon: 'diversity_3', color: '#e11d48', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.HR_ADMIN] },
+    { path: '/sales', label: 'Sales', icon: 'monitoring', color: '#3b82f6', roles: [ROLES.EMPLOYEE, ROLES.MANAGER] },
+    { path: '/marketing', label: 'Marketing', icon: 'ads_click', color: '#9333ea', roles: [ROLES.EMPLOYEE, ROLES.MANAGER] },
+    { path: '/finance', label: 'Finance', icon: 'account_balance_wallet', color: '#16a34a', roles: [ROLES.MANAGER, ROLES.HR_ADMIN] },
+    { path: '/engineering', label: 'Engineering', icon: 'terminal', color: '#ea580c', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT] },
+    { path: '/legal', label: 'Legal', icon: 'gavel', color: '#d97706', roles: [ROLES.MANAGER, ROLES.HR_ADMIN] },
+    { path: '/it-desk', label: 'IT Desk', icon: 'support_agent', color: '#0891b2', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT] },
 ];
 
 export default function AppShell() {
@@ -44,7 +43,12 @@ export default function AppShell() {
                             to={item.path}
                             className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                         >
-                            <span className="material-symbols-outlined icon">{item.icon}</span>
+                            <span
+                                className="material-symbols-outlined icon"
+                                style={{ color: item.color || 'inherit' }}
+                            >
+                                {item.icon}
+                            </span>
                             <span className="label">{item.label}</span>
                         </NavLink>
                     ))}
@@ -64,7 +68,12 @@ export default function AppShell() {
                         to={item.path}
                         className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                     >
-                        <span className="material-symbols-outlined icon">{item.icon}</span>
+                        <span
+                            className="material-symbols-outlined icon"
+                            style={{ color: item.color || 'inherit' }}
+                        >
+                            {item.icon}
+                        </span>
                         <span className="label">{item.label}</span>
                     </NavLink>
                 ))}
