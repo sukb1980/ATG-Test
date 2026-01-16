@@ -27,36 +27,59 @@ export default function AppShell() {
 
     const navItems = ALL_NAV_ITEMS.filter(item => item.roles.includes(role));
 
+    const handleLogout = () => {
+        // Clear session info if any (though currently mock)
+        window.location.href = '/ATG-Test/'; // Hard refresh to login
+    };
+
     return (
         <div className="app-shell">
             {/* Sidebar - Desktop */}
-            <aside className="sidebar">
-                <div style={{ padding: '0 12px 24px 12px', marginBottom: '16px' }}>
-                    <h1 className="headline-small text-primary" style={{ margin: 0, letterSpacing: '-0.03em' }}>Al Tayer Group</h1>
-                    <span className="label-small" style={{ opacity: 0.8, letterSpacing: '0.1em' }}>ENTERPRISE PORTAL</span>
+            <aside className="sidebar flex flex-col justify-between">
+                <div>
+                    <div style={{ padding: '0 12px 24px 12px', marginBottom: '16px' }}>
+                        <h1 className="headline-small text-primary" style={{ margin: 0, letterSpacing: '-0.03em' }}>Al Tayer Group</h1>
+                        <span className="label-small" style={{ opacity: 0.8, letterSpacing: '0.1em' }}>ENTERPRISE PORTAL</span>
+                    </div>
+
+                    <nav className="flex flex-col">
+                        {navItems.map((item) => (
+                            <NavLink
+                                key={item.path}
+                                to={item.path}
+                                className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+                            >
+                                <span
+                                    className="material-symbols-outlined icon"
+                                    style={{ color: item.color || 'inherit' }}
+                                >
+                                    {item.icon}
+                                </span>
+                                <span className="label">{item.label}</span>
+                            </NavLink>
+                        ))}
+                    </nav>
                 </div>
 
-                <nav className="flex flex-col">
-                    {navItems.map((item) => (
-                        <NavLink
-                            key={item.path}
-                            to={item.path}
-                            className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-                        >
-                            <span
-                                className="material-symbols-outlined icon"
-                                style={{ color: item.color || 'inherit' }}
-                            >
-                                {item.icon}
-                            </span>
-                            <span className="label">{item.label}</span>
-                        </NavLink>
-                    ))}
-                </nav>
+                {/* Logout - Desktop */}
+                <button
+                    onClick={handleLogout}
+                    className="nav-item hover:bg-red-50 hover:text-red-600 transition-colors cursor-pointer w-full text-left"
+                    style={{ marginTop: 'auto', border: 'none', background: 'transparent' }}
+                >
+                    <span className="material-symbols-outlined icon" style={{ color: '#ef4444' }}>logout</span>
+                    <span className="label text-red-600">Logout</span>
+                </button>
             </aside>
 
             {/* Main Content */}
             <main className="main-content">
+                <header className="md:hidden flex justify-between items-center p-4 bg-surface/80 backdrop-blur sticky top-0 z-20 border-b border-white/50">
+                    <span className="font-bold text-primary">Al Tayer Enterprise</span>
+                    <button onClick={handleLogout} className="p-2 text-red-500 bg-red-50 rounded-lg">
+                        <span className="material-symbols-outlined text-[20px]">logout</span>
+                    </button>
+                </header>
                 <Outlet />
             </main>
 
