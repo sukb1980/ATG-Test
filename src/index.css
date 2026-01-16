@@ -73,9 +73,40 @@
   --shadow-glow: 0 0 15px rgba(212, 175, 55, 0.3);
   /* Gold glow */
 
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  /* Soft Pastel Palette for Cards */
+  --pastel-blue: #dbeafe;
+  /* Blue 100 */
+  --pastel-rose: #ffe4e6;
+  /* Rose 100 */
+  --pastel-purple: #f3e8ff;
+  /* Purple 100 */
+  --pastel-green: #dcfce7;
+  /* Green 100 */
+  --pastel-orange: #ffedd5;
+  /* Orange 100 */
+  --pastel-gold: #fef9c3;
+  /* Yellow 100 */
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}
+
+/* Mobile Typography Fixes */
+@media (max-width: 640px) {
+  .headline-large {
+    font-size: 28px !important;
+    /* Smaller on mobile */
+    word-break: break-word;
+  }
+
+  .headline-medium {
+    font-size: 24px !important;
+  }
+
+  .headline-small {
+    font-size: 20px !important;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

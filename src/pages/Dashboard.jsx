@@ -5,12 +5,12 @@ import { useUser } from '../context/UserContext';
 import clsx from 'clsx';
 
 const DEPARTMENTS = [
-    { title: 'HR Administration', icon: 'diversity_3', path: '/hr-admin', color: 'bg-rose-50', iconClass: 'icon-gradient-rose', desc: 'Onboarding, Offboarding, & Profile Management' },
-    { title: 'Sales', icon: 'monitoring', path: '/sales', color: 'bg-blue-50', iconClass: 'icon-gradient-blue', desc: 'Pipeline, Revenue, & AI Outreach' },
-    { title: 'Marketing', icon: 'ads_click', path: '/marketing', color: 'bg-purple-50', iconClass: 'icon-gradient-purple', desc: 'Campaigns, SEO, & Content Generation' },
-    { title: 'Finance', icon: 'account_balance_wallet', path: '/finance', color: 'bg-emerald-50', iconClass: 'icon-gradient-green', desc: 'Invoices, Budget, & Risk Analysis' },
-    { title: 'Engineering', icon: 'terminal', path: '/engineering', color: 'bg-orange-50', iconClass: 'icon-gradient-orange', desc: 'Code Analysis, Docs, & Support Tickets' },
-    { title: 'Legal', icon: 'gavel', path: '/legal', color: 'bg-slate-100', iconClass: 'icon-gradient-gold', desc: 'Contracts, Compliance, & Regulations' },
+    { title: 'HR Administration', icon: 'diversity_3', path: '/hr-admin', color: 'bg-[var(--pastel-rose)]', iconClass: 'icon-gradient-rose', desc: 'Onboarding, Offboarding, & Profile Management' },
+    { title: 'Sales', icon: 'monitoring', path: '/sales', color: 'bg-[var(--pastel-blue)]', iconClass: 'icon-gradient-blue', desc: 'Pipeline, Revenue, & AI Outreach' },
+    { title: 'Marketing', icon: 'ads_click', path: '/marketing', color: 'bg-[var(--pastel-purple)]', iconClass: 'icon-gradient-purple', desc: 'Campaigns, SEO, & Content Generation' },
+    { title: 'Finance', icon: 'account_balance_wallet', path: '/finance', color: 'bg-[var(--pastel-green)]', iconClass: 'icon-gradient-green', desc: 'Invoices, Budget, & Risk Analysis' },
+    { title: 'Engineering', icon: 'terminal', path: '/engineering', color: 'bg-[var(--pastel-orange)]', iconClass: 'icon-gradient-orange', desc: 'Code Analysis, Docs, & Support Tickets' },
+    { title: 'Legal', icon: 'gavel', path: '/legal', color: 'bg-[var(--pastel-gold)]', iconClass: 'icon-gradient-gold', desc: 'Contracts, Compliance, & Regulations' },
 ];
 
 export default function Dashboard() {
@@ -58,24 +58,24 @@ export default function Dashboard() {
                     {DEPARTMENTS.map((dept) => (
                         <Card
                             key={dept.title}
-                            className="group cursor-pointer hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl"
+                            className={`group cursor-pointer hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl ${dept.color}`}
                             onClick={() => navigate(dept.path)}
                             padding="24px"
                             style={{ border: '1px solid rgba(255,255,255,0.5)' }}
                         >
                             <div className="flex flex-col gap-4 h-full">
                                 <div className="flex justify-between items-start">
-                                    <div className={clsx("w-16 h-16 rounded-2xl flex items-center justify-center shadow-inner", dept.color)}>
-                                        <span className={clsx("material-symbols-outlined text-[36px]", dept.iconClass)}>{dept.icon}</span>
+                                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-white/60 shadow-sm backdrop-blur-sm">
+                                        <span className={clsx("material-symbols-outlined text-[48px]", dept.iconClass)}>{dept.icon}</span>
                                     </div>
-                                    <div className="w-10 h-10 rounded-full bg-surface-variant/50 flex items-center justify-center delay-100 transition-all group-hover:bg-primary group-hover:text-white">
-                                        <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+                                    <div className="w-12 h-12 rounded-full bg-white/50 flex items-center justify-center delay-100 transition-all group-hover:bg-primary group-hover:text-white">
+                                        <span className="material-symbols-outlined text-[24px]">arrow_forward</span>
                                     </div>
                                 </div>
 
                                 <div>
-                                    <h3 className="title-medium font-bold mb-2 group-hover:text-primary transition-colors">{dept.title}</h3>
-                                    <p className="body-small text-secondary leading-relaxed">
+                                    <h3 className="title-medium font-bold mb-2 text-slate-800">{dept.title}</h3>
+                                    <p className="body-medium text-slate-600 leading-relaxed font-medium">
                                         {dept.desc}
                                     </p>
                                 </div>
