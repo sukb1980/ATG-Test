@@ -2,63 +2,77 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const MODULES = [
-    { title: 'HR Admin', icon: 'diversity_3', path: '/hr-admin', color: 'text-pink-400', desc: 'Staff Profiles & Leave' },
-    { title: 'Sales', icon: 'monitoring', path: '/sales', color: 'text-blue-400', desc: 'Revenue & Pipeline' },
-    { title: 'Finance', icon: 'account_balance_wallet', path: '/finance', color: 'text-emerald-400', desc: 'Invoices & Payroll' },
-    { title: 'IT Desk', icon: 'support_agent', path: '/it-desk', color: 'text-purple-400', desc: 'Tickets & Assets' },
-    { title: 'Legal', icon: 'gavel', path: '/legal', color: 'text-amber-400', desc: 'Compliance Docs' },
-    { title: 'Settings', icon: 'settings', path: '/settings', color: 'text-slate-400', desc: 'System Config' },
+    { title: 'HR Admin', icon: 'diversity_3', path: '/hr-admin', desc: 'Employee Profiles & Leave Management' },
+    { title: 'Sales', icon: 'trending_up', path: '/sales', desc: 'Performance Metrics & Pipeline' },
+    { title: 'Finance', icon: 'account_balance', path: '/finance', desc: 'Payroll, Expenses & Invoicing' },
+    { title: 'IT Desk', icon: 'desktop_windows', path: '/it-desk', desc: 'Technical Support & Asset Tracking' },
+    { title: 'Legal', icon: 'gavel', path: '/legal', desc: 'Compliance & Document Library' },
+    { title: 'Settings', icon: 'settings', path: '/settings', desc: 'System Configuration' },
 ];
 
 export default function Dashboard() {
     const navigate = useNavigate();
 
     return (
-        <div className="max-w-6xl mx-auto w-full fade-in">
+        <div className="max-w-7xl mx-auto w-full fade-in pb-12">
             {/* Header */}
-            <div className="mb-10">
-                <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 font-display tracking-tight flex items-center gap-3">
-                    <span className="w-2 h-8 bg-cyan-500 rounded-full shadow-[0_0_10px_#00f3ff]"></span>
-                    COMMAND CENTER
-                </h1>
-                <p className="text-slate-400 text-lg">Welcome back, Commander. Systems detected normal.</p>
+            <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between border-b border-brand-border pb-6">
+                <div>
+                    <h1 className="text-4xl font-display font-medium text-brand-navy mb-2">Executive Overview</h1>
+                    <p className="text-slate-500 text-lg font-light">Welcome back, Alexander.</p>
+                </div>
+                <div className="mt-4 md:mt-0">
+                    <span className="text-sm text-brand-orange uppercase tracking-widest font-bold">Today: Jan 17, 2026</span>
+                </div>
             </div>
 
-            {/* AI Hero Banner - Static simpler version for stability first */}
-            <div className="w-full glass-panel p-8 mb-10 relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/20 to-transparent"></div>
-
-                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div className="flex items-center gap-6">
-                        <div className="w-16 h-16 rounded-full border border-cyan-500/30 flex items-center justify-center bg-black/20 animate-pulse-slow">
-                            <span className="material-symbols-outlined text-4xl text-cyan-400">smart_toy</span>
-                        </div>
-                        <div>
-                            <h2 className="text-xl font-bold text-white mb-1">Cortex AI Online</h2>
-                            <p className="text-cyan-200/60 text-sm">"I am ready to assist with reports and queries."</p>
-                        </div>
+            {/* Quick Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div className="glass-panel p-8 border-t-4 border-t-brand-navy">
+                    <p className="text-slate-500 text-xs uppercase tracking-widest mb-2">Total Revenue (Q1)</p>
+                    <div className="flex items-baseline gap-2">
+                        <span className="text-4xl font-display font-bold text-brand-navy">$14.2M</span>
+                        <span className="text-emerald-600 text-sm font-medium flex items-center">
+                            <span className="material-symbols-outlined text-sm">arrow_upward</span> 12%
+                        </span>
+                    </div>
+                </div>
+                <div className="glass-panel p-8 border-t-4 border-t-brand-orange">
+                    <p className="text-slate-500 text-xs uppercase tracking-widest mb-2">Active Tickets</p>
+                    <div className="flex items-baseline gap-2">
+                        <span className="text-4xl font-display font-bold text-brand-navy">24</span>
+                        <span className="text-slate-400 text-sm">Pending</span>
+                    </div>
+                </div>
+                <div className="glass-panel p-8 border-t-4 border-t-brand-navy">
+                    <p className="text-slate-500 text-xs uppercase tracking-widest mb-2">Employee Efficiency</p>
+                    <div className="flex items-baseline gap-2">
+                        <span className="text-4xl font-display font-bold text-brand-navy">94%</span>
+                        <span className="text-brand-orange text-sm font-medium">Excellent</span>
                     </div>
                 </div>
             </div>
 
-            {/* Grid */}
+            {/* Module Grid */}
             <div>
-                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Active Modules</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <h3 className="text-2xl font-display text-brand-navy mb-8">Management Modules</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {MODULES.map((mod) => (
                         <div
                             key={mod.title}
                             onClick={() => navigate(mod.path)}
-                            className="glass-panel p-6 cursor-pointer hover:bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/30 group"
+                            className="glass-panel p-8 cursor-pointer group hover:-translate-y-1 transition-transform duration-300"
                         >
-                            <div className="flex justify-between items-start mb-4">
-                                <div className={`w-12 h-12 rounded-lg bg-black/40 border border-white/5 flex items-center justify-center group-hover:border-white/20 transition-colors shadow-inner`}>
-                                    <span className={`material-symbols-outlined text-2xl ${mod.color} group-hover:scale-110 transition-transform`}>{mod.icon}</span>
-                                </div>
-                                <span className="material-symbols-outlined text-slate-600 group-hover:text-cyan-400 transition-colors">arrow_outward</span>
+                            <div className="w-12 h-12 bg-brand-silver rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-navy transition-colors duration-300">
+                                <span className="material-symbols-outlined text-brand-navy group-hover:text-white transition-colors">{mod.icon}</span>
                             </div>
-                            <h3 className="text-lg font-bold text-slate-200 group-hover:text-white mb-1">{mod.title}</h3>
-                            <p className="text-sm text-slate-500 leading-relaxed">{mod.desc}</p>
+                            <h3 className="text-xl font-display font-bold text-brand-navy mb-3 group-hover:text-brand-orange transition-colors">{mod.title}</h3>
+                            <p className="text-slate-500 text-sm leading-relaxed">{mod.desc}</p>
+
+                            <div className="mt-6 flex items-center text-brand-orange text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span>Access Module</span>
+                                <span className="material-symbols-outlined text-sm ml-2">arrow_forward</span>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -66,11 +80,3 @@ export default function Dashboard() {
         </div>
     );
 }
-
-// Simple Fade In Animation embedded
-const style = document.createElement('style');
-style.innerHTML = `
-  .fade-in { animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-`;
-document.head.appendChild(style);
