@@ -1,105 +1,113 @@
 @import './responsive.css';
 
 :root {
-  /* MODERN VIBRANT TOKENS */
+  /* AL TAYER PREMIUM TOKENS */
 
-  /* Primary Brand Colors - Indigo/Violet */
-  --md-sys-color-primary: #6366f1;
-  /* Indigo 500 */
-  --md-sys-color-on-primary: #FFFFFF;
-  --md-sys-color-primary-container: #e0e7ff;
-  /* Indigo 100 */
-  --md-sys-color-on-primary-container: #3730a3;
-  /* Indigo 800 */
+  /* Primary Brand Colors - Deep Corporate Blue & Gold */
+  --md-sys-color-primary: #0f172a;
+  /* Slate 900 - Deep, authoritative blue */
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #1e293b;
+  /* Slate 800 */
+  --md-sys-color-on-primary-container: #f8fafc;
+  /* Slate 50 */
 
-  /* Secondary/Neutral */
-  --md-sys-color-secondary: #64748b;
-  /* Slate 500 */
-  --md-sys-color-on-secondary: #FFFFFF;
-  --md-sys-color-secondary-container: #f1f5f9;
-  /* Slate 100 */
-  --md-sys-color-on-secondary-container: #0f172a;
-  /* Slate 900 */
+  /* Secondary - Elegant Gold/Bronze for accents */
+  --md-sys-color-secondary: #d4af37;
+  /* Metallic Gold */
+  --md-sys-color-on-secondary: #0f172a;
+  --md-sys-color-secondary-container: #fbf5df;
+  --md-sys-color-on-secondary-container: #423706;
 
-  /* Tertiary/Accent (Teal) */
-  --md-sys-color-tertiary: #14b8a6;
-  /* Teal 500 */
-  --md-sys-color-on-tertiary: #FFFFFF;
-  --md-sys-color-tertiary-container: #ccfbf1;
-  /* Teal 100 */
-  --md-sys-color-on-tertiary-container: #115e59;
-  /* Teal 800 */
+  /* Tertiary - Teal/Subtle Tech Blue for variety */
+  --md-sys-color-tertiary: #0e7490;
+  /* Cyan 700 */
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #cffafe;
+  --md-sys-color-on-tertiary-container: #083344;
 
-  /* Surface & Backgrounds */
+  /* Surface & Backgrounds - Clean, airy, premium white/gray */
   --md-sys-color-background: #f8fafc;
-  --md-sys-color-on-background: #1e293b;
+  /* Slate 50 */
+  --md-sys-color-on-background: #0f172a;
 
-  --md-sys-color-surface: rgba(255, 255, 255, 0.7);
-  /* Glass effect */
+  --md-sys-color-surface: rgba(255, 255, 255, 0.85);
+  /* Frosty White */
   --md-sys-color-surface-solid: #ffffff;
-  --md-sys-color-on-surface: #1e293b;
+  --md-sys-color-on-surface: #0f172a;
+  /* Deep text */
 
-  --md-sys-color-surface-variant: rgba(241, 245, 249, 0.6);
+  --md-sys-color-surface-variant: rgba(241, 245, 249, 0.7);
   --md-sys-color-on-surface-variant: #475569;
+  /* Slate 600 - Muted text */
 
-  --md-sys-color-outline: #cbd5e1;
-  --md-sys-color-outline-variant: #e2e8f0;
+  --md-sys-color-outline: #e2e8f0;
+  /* Slate 200 */
+  --md-sys-color-outline-variant: #cbd5e1;
 
-  /* Glassmorphism */
-  --glass-border: 1px solid rgba(255, 255, 255, 0.5);
-  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --glass-blur: blur(12px);
+  /* Glassmorphism Refined */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --glass-blur: blur(16px);
 
   /* Status Colors */
-  --md-sys-color-success: #10b981;
-  --md-sys-color-warning: #f59e0b;
-  --md-sys-color-error: #ef4444;
+  --md-sys-color-success: #059669;
+  /* Emerald 600 */
+  --md-sys-color-warning: #d97706;
+  /* Amber 600 */
+  --md-sys-color-error: #dc2626;
+  /* Red 600 */
 
-  /* Typography */
-  --font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  /* Typography - Modern & Clean */
+  --font-family-base: 'Inter', 'Roboto', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
-  --layout-sidebar-width: 260px;
-  --layout-header-height: 70px;
+  --layout-sidebar-width: 280px;
+  --layout-header-height: 72px;
 
   /* Effects */
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+  --shadow-glow: 0 0 15px rgba(212, 175, 55, 0.3);
+  /* Gold glow */
 
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --md-sys-color-primary: #818cf8;
-    /* Indigo 400 */
-    --md-sys-color-on-primary: #1e1b4b;
-    --md-sys-color-primary-container: #3730a3;
-    --md-sys-color-on-primary-container: #e0e7ff;
+    --md-sys-color-primary: #f8fafc;
+    /* Slate 50 - High contrast text */
+    --md-sys-color-on-primary: #0f172a;
+    --md-sys-color-primary-container: #1e293b;
+    --md-sys-color-on-primary-container: #cbd5e1;
 
-    --md-sys-color-secondary: #94a3b8;
+    --md-sys-color-secondary: #fcd34d;
+    /* Brighter Gold */
     --md-sys-color-on-secondary: #0f172a;
 
-    --md-sys-color-background: #0f172a;
-    /* Slate 900 */
-    --md-sys-color-on-background: #f1f5f9;
+    --md-sys-color-background: #0b1120;
+    /* Very deep blue/black */
+    --md-sys-color-on-background: #f8fafc;
 
     --md-sys-color-surface: rgba(30, 41, 59, 0.7);
     /* Slate 800 Glass */
     --md-sys-color-surface-solid: #1e293b;
-    --md-sys-color-on-surface: #f1f5f9;
+    --md-sys-color-on-surface: #f8fafc;
 
-    --md-sys-color-surface-variant: rgba(51, 65, 85, 0.6);
-    --md-sys-color-on-surface-variant: #cbd5e1;
+    --md-sys-color-surface-variant: rgba(51, 65, 85, 0.5);
+    --md-sys-color-on-surface-variant: #94a3b8;
+    /* Slate 400 */
 
     --md-sys-color-outline: #334155;
     --md-sys-color-outline-variant: #475569;
 
-    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -113,53 +121,64 @@ body {
   background-color: var(--md-sys-color-background);
   color: var(--md-sys-color-on-background);
   -webkit-font-smoothing: antialiased;
-  line-height: 1.5;
+  line-height: 1.6;
 
-  /* Mesh Gradient Background */
+  /* Subtle Abstract Background for Premium Feel */
   background-image:
-    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(20, 184, 166, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(236, 72, 153, 0.15) 0px, transparent 50%);
+    radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 25%),
+    /* Subtle Gold */
+    radial-gradient(circle at 85% 30%, rgba(14, 116, 144, 0.05) 0%, transparent 25%);
+  /* Subtle Teal */
   background-attachment: fixed;
   min-height: 100vh;
 }
 
-/* Typography Classes */
+/* Typography Classes - Scaled & Elegant */
+.headline-large {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--md-sys-color-on-background);
+}
+
 .headline-medium {
   font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--md-sys-color-on-background);
 }
 
 .headline-small {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
 }
 
 .title-medium {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-background);
+}
+
+.body-large {
   font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-weight: 400;
 }
 
 .body-medium {
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.5;
 }
 
 .body-small {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--md-sys-color-on-surface-variant);
 }
 
 .label-small {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   color: var(--md-sys-color-on-surface-variant);
   text-transform: uppercase;
 }
@@ -167,13 +186,13 @@ body {
 /* Utilities */
 html {
   font-size: 100%;
-  -webkit-text-size-adjust: 100%;
 }
 
 input,
 select,
 textarea,
 button {
+  font-family: var(--font-family-base);
   font-size: 14px;
 }
 
@@ -197,8 +216,28 @@ button {
   justify-content: center;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-1 {
+  gap: 4px;
+}
+
 .gap-2 {
   gap: 8px;
+}
+
+.gap-3 {
+  gap: 12px;
 }
 
 .gap-4 {
@@ -209,12 +248,58 @@ button {
   gap: 24px;
 }
 
+.gap-8 {
+  gap: 32px;
+}
+
+.p-2 {
+  padding: 8px;
+}
+
 .p-4 {
-  padding: 24px;
+  padding: 16px;
 }
 
 .p-6 {
+  padding: 24px;
+}
+
+.p-8 {
   padding: 32px;
+}
+
+.px-4 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.py-2 {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.mb-6 {
+  margin-bottom: 24px;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mr-2 {
+  margin-right: 8px;
 }
 
 .w-full {
@@ -225,21 +310,91 @@ button {
   height: 100%;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.rounded-md {
+  border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+  border-radius: var(--radius-lg);
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+/* Colors */
 .text-primary {
   color: var(--md-sys-color-primary);
 }
 
 .text-secondary {
+  color: var(--md-sys-color-secondary);
+}
+
+.text-muted {
   color: var(--md-sys-color-on-surface-variant);
 }
 
-.text-error {
-  color: var(--md-sys-color-error);
+.bg-surface {
+  background-color: var(--md-sys-color-surface);
 }
 
-.text-success {
-  color: var(--md-sys-color-success);
+.bg-surface-variant {
+  background-color: var(--md-sys-color-surface-variant);
 }
+
+/* Glass Card Utility */
+.glass-card {
+  background: var(--md-sys-color-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+}
+
+.glass-card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
 
 /* Animation Utils */
 @keyframes fadeIn {
@@ -254,52 +409,35 @@ button {
   }
 }
 
-@keyframes slideUp {
+@keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateX(20px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.02);
-  }
-
-  100% {
-    transform: scale(1);
+    transform: translateX(0);
   }
 }
 
 .fade-in {
-  animation: fadeIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.slide-up {
-  animation: slideUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+.slide-in-right {
+  animation: slideInRight 0.4s ease-out forwards;
 }
 
 button {
-  cursor: pointer;
-  border: none;
-  font-family: inherit;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 button:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
-/* Material Symbols Utility */
+/* Material Symbols */
 .material-symbols-outlined {
   font-family: 'Material Symbols Rounded';
   font-weight: normal;
@@ -313,6 +451,5 @@ button:active {
   word-wrap: normal;
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
-  font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }

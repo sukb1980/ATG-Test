@@ -7,6 +7,14 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings';
 
+// New Enterprise Modules
+import Sales from './pages/Sales';
+import Marketing from './pages/Marketing';
+import Finance from './pages/Finance';
+import Engineering from './pages/Engineering';
+import Legal from './pages/Legal';
+import HRAdmin from './pages/HRAdmin';
+
 import LeaveList from './components/modules/leave/LeaveList';
 import LeaveApplicationForm from './components/modules/leave/LeaveApplicationForm';
 import LeaveDetail from './components/modules/leave/LeaveDetail';
@@ -30,24 +38,28 @@ function App() {
           <Route element={<AppShell />}>
             <Route path="/dashboard" element={<Dashboard />} />
 
-            {/* Leave Module */}
+            {/* Enterprise Modules */}
+            <Route path="/hr-admin" element={<HRAdmin />} />
+            <Route path="/sales" element={<Sales />} />
+            <Route path="/marketing" element={<Marketing />} />
+            <Route path="/finance" element={<Finance />} />
+            <Route path="/engineering" element={<Engineering />} />
+            <Route path="/legal" element={<Legal />} />
+
+            {/* Legacy Modules (Accessible via direct link or if linked in future) */}
             <Route path="/leave" element={<LeaveList />} />
             <Route path="/leave/apply" element={<LeaveApplicationForm />} />
             <Route path="/leave/:id" element={<LeaveDetail />} />
 
-            {/* IT Desk Module */}
             <Route path="/it-desk" element={<ITDesk />} />
             <Route path="/it-desk/new" element={<TicketForm />} />
             <Route path="/it-desk/:id" element={<TicketDetail />} />
 
-            {/* LPO Module */}
             <Route path="/lpo" element={<LPOList />} />
             <Route path="/lpo/:id" element={<LPODetail />} />
 
-            {/* Documents */}
             <Route path="/documents" element={<DocumentList />} />
 
-            {/* Settings */}
             <Route path="/settings" element={<Settings />} />
           </Route>
 

@@ -5,12 +5,15 @@ import { useUser, ROLES } from '../../context/UserContext';
 import './AppShell.css';
 
 const ALL_NAV_ITEMS = [
-    { path: '/dashboard', label: 'Home', icon: 'home', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT, ROLES.HR_ADMIN] },
-    { path: '/leave', label: 'Leave', icon: 'flight_takeoff', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.HR_ADMIN] },
-    { path: '/it-desk', label: 'IT Desk', icon: 'computer', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT] },
-    { path: '/lpo', label: 'Approvals', icon: 'approval', roles: [ROLES.MANAGER, ROLES.HR_ADMIN] },
-    { path: '/documents', label: 'Docs', icon: 'folder', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT, ROLES.HR_ADMIN] },
-    // Removed Settings, managing manually
+    { path: '/dashboard', label: 'Overview', icon: 'dashboard', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT, ROLES.HR_ADMIN] },
+    { path: '/hr-admin', label: 'HR Admin', icon: 'people', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.HR_ADMIN] },
+    { path: '/sales', label: 'Sales', icon: 'point_of_sale', roles: [ROLES.EMPLOYEE, ROLES.MANAGER] },
+    { path: '/marketing', label: 'Marketing', icon: 'campaign', roles: [ROLES.EMPLOYEE, ROLES.MANAGER] },
+    { path: '/finance', label: 'Finance', icon: 'payments', roles: [ROLES.MANAGER, ROLES.HR_ADMIN] },
+    { path: '/engineering', label: 'Engineering', icon: 'code', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT] },
+    { path: '/legal', label: 'Legal', icon: 'gavel', roles: [ROLES.MANAGER, ROLES.HR_ADMIN] },
+    // Keeping Legacy IT Desk for support
+    { path: '/it-desk', label: 'IT Desk', icon: 'support_agent', roles: [ROLES.EMPLOYEE, ROLES.MANAGER, ROLES.IT_AGENT] },
 ];
 
 export default function AppShell() {
@@ -29,9 +32,9 @@ export default function AppShell() {
         <div className="app-shell">
             {/* Sidebar - Desktop */}
             <aside className="sidebar">
-                <div style={{ padding: '24px 16px', marginBottom: '16px' }}>
-                    <h1 className="headline-small text-primary" style={{ margin: 0 }}>ATG App</h1>
-                    <span className="label-small" style={{ opacity: 0.7 }}>{role} Portal</span>
+                <div style={{ padding: '0 12px 24px 12px', marginBottom: '16px' }}>
+                    <h1 className="headline-small text-primary" style={{ margin: 0, letterSpacing: '-0.03em' }}>Al Tayer Group</h1>
+                    <span className="label-small" style={{ opacity: 0.8, letterSpacing: '0.1em' }}>ENTERPRISE PORTAL</span>
                 </div>
 
                 <nav className="flex flex-col">
