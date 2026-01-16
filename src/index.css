@@ -149,17 +149,17 @@
 body {
   margin: 0;
   font-family: var(--font-family-base);
-  background-color: var(--md-sys-color-background);
+  background-color: #f1f5f9;
+  /* Slate 100 - Bright Background */
   color: var(--md-sys-color-on-background);
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
 
-  /* Subtle Abstract Background for Premium Feel */
+  /* Bright & Fresh Background */
   background-image:
-    radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 25%),
-    /* Subtle Gold */
-    radial-gradient(circle at 85% 30%, rgba(14, 116, 144, 0.05) 0%, transparent 25%);
-  /* Subtle Teal */
+    radial-gradient(at 0% 0%, hsla(210, 100%, 93%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(220, 100%, 96%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(190, 100%, 92%, 1) 0, transparent 50%);
   background-attachment: fixed;
   min-height: 100vh;
 }
