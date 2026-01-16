@@ -1,36 +1,43 @@
 import React from 'react';
-import DepartmentLayout from '../components/modules/DepartmentLayout';
 
 export default function Marketing() {
-    const agents = [
-        { name: 'Generate campaign copy', desc: 'Creates localized ad copy and email sequences.' },
-        { name: 'Research documents', desc: 'Analyzes market research and competitor reports.' },
-        { name: 'Brainstorm SEO keywords', desc: 'Suggests high-traffic keywords for content strategy.' },
-        { name: 'Webinar landing page', desc: 'Drafts high-converting copy for event registration.' },
-        { name: 'Social media copy', desc: 'Generates engaging posts for LinkedIn and Twitter.' },
-        { name: 'Holiday campaign ideas', desc: 'Brainstorms creative concepts for seasonal promotions.' },
-    ];
-
-    const metrics = [
-        { label: 'Campaign ROI', value: '145%', trend: 'up', trendValue: '+10%' },
-        { label: 'Leads Generated', value: '2,300', trend: 'up', trendValue: '+22%' },
-        { label: 'Social Reach', value: '50k', trend: 'up', trendValue: '+5%' },
-        { label: 'Avg. CTR', value: '3.2%', trend: 'down', trendValue: '-0.5%' },
-    ];
-
-    const activity = [
-        { action: 'Launched "Summer Sale" Campaign', time: '1 hour ago' },
-        { action: 'SEO Keyword Audit Completed', time: '3 hours ago' },
-        { action: 'New Blog Post Published', time: '5 hours ago' },
-    ];
-
     return (
-        <DepartmentLayout
-            title="Marketing"
-            description="Drive engagement and brand growth with data-driven marketing AI."
-            agents={agents}
-            metrics={metrics}
-            activity={activity}
-        />
+        <div className="w-full fade-in">
+            <h1 className="text-3xl font-bold text-white mb-8 font-display tracking-tight flex items-center gap-3">
+                <span className="material-symbols-outlined text-3xl text-purple-500">ads_click</span>
+                MARKETING HUB
+            </h1>
+
+            <div className="glass-panel p-8 text-center mb-8">
+                <h2 className="text-2xl font-bold text-white mb-4">Current Campaign: "Future Forward"</h2>
+                <div className="flex justify-center gap-4 mb-6">
+                    <div className="text-center px-6 border-r border-white/10">
+                        <p className="text-3xl font-bold text-white">45k</p>
+                        <p className="text-xs text-purple-400 uppercase">Impressions</p>
+                    </div>
+                    <div className="text-center px-6 border-r border-white/10">
+                        <p className="text-3xl font-bold text-white">3.2%</p>
+                        <p className="text-xs text-purple-400 uppercase">CTR</p>
+                    </div>
+                    <div className="text-center px-6">
+                        <p className="text-3xl font-bold text-white">850</p>
+                        <p className="text-xs text-purple-400 uppercase">Leads</p>
+                    </div>
+                </div>
+                <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-[65%]"></div>
+                </div>
+                <p className="text-xs text-slate-500 mt-2 text-right">Campaign Progress: 65%</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {['Social Media Assets', 'Email Templates', 'Brand Guidelines', 'SEO Analytics', 'Content Calendar', 'Event Planning'].map((item) => (
+                    <div key={item} className="glass-panel p-6 hover:bg-white/5 cursor-pointer transition-all group">
+                        <h3 className="text-lg font-bold text-white group-hover:text-purple-400 mb-2">{item}</h3>
+                        <p className="text-sm text-slate-500">Access latest resources • Updated 2h ago</p>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 }

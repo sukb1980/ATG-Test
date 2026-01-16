@@ -1,183 +1,101 @@
 import React, { useState } from 'react';
-import Card from '../components/common/Card';
-import Button from '../components/common/Button';
-import Badge from '../components/common/Badge';
-import { useUser, ROLES } from '../context/UserContext';
-import clsx from 'clsx'; // Assuming clsx available or using conditionals
 
 export default function Settings() {
-    const [activeTab, setActiveTab] = useState('Profile');
-    const [notifications, setNotifications] = useState({
-        email: true,
-        push: false,
-        updates: true
-    });
-    const { role, setRole } = useUser();
-
-    const TABS = ['Profile', 'Notifications', 'Appearance'];
+    const [notifications, setNotifications] = useState(true);
+    const [sound, setSound] = useState(true);
+    const [darkMode, setDarkMode] = useState(true); // Default to dark/cyber mode
 
     return (
-        <div className="flex flex-col gap-6 fade-in max-w-4xl mx-auto w-full">
-            <div className="flex justify-between items-center">
-                <div>
-                    <h1 className="headline-small text-primary">Settings</h1>
-                    <p className="body-medium text-secondary">Manage your preferences and account.</p>
-                </div>
-            </div>
+        <div className="max-w-4xl mx-auto w-full fade-in">
+            <h1 className="text-3xl font-bold text-white mb-8 font-display tracking-tight flex items-center gap-3">
+                <span className="material-symbols-outlined text-3xl text-slate-400">settings</span>
+                SYSTEM CONFIGURATION
+            </h1>
 
-            {/* Tabs */}
-            <div className="flex border-b overflow-x-auto" style={{ borderColor: 'var(--md-sys-color-outline-variant)' }}>
-                {TABS.map(tab => (
-                    <button
-                        key={tab}
-                        onClick={() => setActiveTab(tab)}
-                        style={{
-                            padding: '12px 24px',
-                            cursor: 'pointer',
-                            borderBottom: activeTab === tab ? '2px solid var(--md-sys-color-primary)' : '2px solid transparent',
-                            color: activeTab === tab ? 'var(--md-sys-color-primary)' : 'var(--md-sys-color-on-surface-variant)',
-                            fontWeight: activeTab === tab ? 600 : 500,
-                            background: 'none',
-                            fontSize: '14px'
-                        }}
-                    >
-                        {tab}
-                    </button>
-                ))}
-            </div>
+            <div className="flex flex-col gap-6">
 
-            <div className="mt-2">
-                {activeTab === 'Profile' && (
-                    <div className="flex flex-col gap-6">
-                        <Card>
-                            <div className="flex items-start gap-6">
-                                <div style={{ width: '100px', height: '100px', borderRadius: '50%', background: '#e0f2fe', overflow: 'hidden', border: '4px solid white', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-                                    <img src="https://ui-avatars.com/api/?name=Alex+Doe&background=0D8ABC&color=fff&size=200" alt="Profile" />
-                                </div>
-                                <div className="flex-1">
-                                    <div className="flex justify-between items-start">
-                                        <div>
-                                            <h2 className="headline-small font-bold">Alex Doe</h2>
-                                            <p className="body-medium text-secondary">Senior Software Engineer</p>
-                                            <p className="body-small text-secondary mt-1">Employee ID: ATG-10045</p>
-                                        </div>
-                                        <Button variant="outlined">Edit Profile</Button>
-                                    </div>
-
-                                    <div className="flex gap-2 mt-4">
-                                        <Badge color="success">Active Status</Badge>
-                                        <Badge color="primary">{role}</Badge>
-                                    </div>
-                                </div>
-                            </div>
-                        </Card>
-
-                        <Card>
-                            <h3 className="title-medium mb-4">Role Switching (Demo)</h3>
-                            <p className="body-small text-secondary mb-4">Toggle between different user roles to preview the application permissions.</p>
-                            <div className="grid grid-cols-2 md:flex md:flex-wrap gap-3">
-                                {Object.values(ROLES).map(r => (
-                                    <Button
-                                        key={r}
-                                        variant={role === r ? 'filled' : 'outlined'}
-                                        onClick={() => setRole(r)}
-                                        style={{ height: '40px', width: '100%', justifyContent: 'center' }}
-                                    >
-                                        {r}
-                                    </Button>
-                                ))}
-                            </div>
-                        </Card>
-
-                        <Card>
-                            <h3 className="title-medium mb-4">Contact Information</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label className="label-small block mb-1">Email Address</label>
-                                    <p className="body-medium p-2 bg-gray-50 rounded border border-gray-200">alex.doe@atg.com</p>
-                                </div>
-                                <div>
-                                    <label className="label-small block mb-1">Phone Number</label>
-                                    <p className="body-medium p-2 bg-gray-50 rounded border border-gray-200">+1 (555) 012-3456</p>
-                                </div>
-                                <div>
-                                    <label className="label-small block mb-1">Department</label>
-                                    <p className="body-medium p-2 bg-gray-50 rounded border border-gray-200">Engineering</p>
-                                </div>
-                                <div>
-                                    <label className="label-small block mb-1">Location</label>
-                                    <p className="body-medium p-2 bg-gray-50 rounded border border-gray-200">New York Office</p>
-                                </div>
-                            </div>
-                        </Card>
+                {/* Profile Section */}
+                <div className="glass-panel p-6">
+                    <h2 className="text-xl font-bold text-cyan-400 mb-4 border-b border-white/10 pb-2">User Profile</h2>
+                    <div className="flex items-center gap-6">
+                        <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-cyan-600 to-blue-600 border-2 border-white/20 flex items-center justify-center text-2xl font-bold text-white">
+                            AK
+                        </div>
+                        <div>
+                            <h3 className="text-lg font-bold text-white">Alexander K.</h3>
+                            <p className="text-slate-400">System Administrator</p>
+                            <p className="text-slate-500 text-sm mt-1">ID: #ATG-8842-X</p>
+                        </div>
+                        <button className="ml-auto btn-primary py-2 px-4 text-sm">
+                            Edit Profile
+                        </button>
                     </div>
-                )}
+                </div>
 
-                {activeTab === 'Notifications' && (
-                    <Card>
-                        <h2 className="title-medium mb-4">Notification Preferences</h2>
-                        <div className="flex flex-col gap-0 divide-y divide-gray-100">
-                            {[
-                                { id: 'email', label: 'Email Notifications', desc: 'Receive daily summaries and critical alerts.' },
-                                { id: 'push', label: 'Push Notifications', desc: 'Get real-time updates on your device.' },
-                                { id: 'updates', label: 'Product Updates', desc: 'News about ATG App features and improvements.' }
-                            ].map(item => (
-                                <div key={item.id} className="flex justify-between items-center py-4">
-                                    <div>
-                                        <p className="body-medium font-bold">{item.label}</p>
-                                        <p className="body-small text-secondary">{item.desc}</p>
-                                    </div>
-                                    <div
-                                        onClick={() => setNotifications({ ...notifications, [item.id]: !notifications[item.id] })}
-                                        style={{
-                                            width: '44px', height: '24px',
-                                            background: notifications[item.id] ? 'var(--md-sys-color-primary)' : '#e2e8f0',
-                                            borderRadius: '12px',
-                                            position: 'relative',
-                                            cursor: 'pointer',
-                                            transition: 'background 0.2s'
-                                        }}
-                                    >
-                                        <div style={{
-                                            width: '20px', height: '20px',
-                                            background: 'white',
-                                            borderRadius: '50%',
-                                            position: 'absolute',
-                                            top: '2px',
-                                            left: notifications[item.id] ? '22px' : '2px',
-                                            transition: 'left 0.2s',
-                                            boxShadow: '0 1px 2px rgba(0,0,0,0.2)'
-                                        }} />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </Card>
-                )}
+                {/* Preferences */}
+                <div className="glass-panel p-6">
+                    <h2 className="text-xl font-bold text-pink-400 mb-6 border-b border-white/10 pb-2">Preferences</h2>
 
-                {activeTab === 'Appearance' && (
-                    <Card>
-                        <div className="flex justify-between items-center">
+                    <div className="space-y-6">
+                        {/* Toggle Item */}
+                        <div className="flex items-center justify-between">
                             <div>
-                                <p className="title-medium">Dark Mode</p>
-                                <p className="body-medium text-secondary">Switch between light and dark themes.</p>
+                                <h3 className="text-white font-medium">System Notifications</h3>
+                                <p className="text-slate-500 text-sm">Receive alerts for new tickets and messages</p>
                             </div>
-                            <div className="p-2 bg-yellow-50 text-yellow-700 rounded border border-yellow-200 text-sm">
-                                System Default
-                            </div>
+                            <button
+                                onClick={() => setNotifications(!notifications)}
+                                className={`w-12 h-6 rounded-full p-1 transition-colors duration-300 ${notifications ? 'bg-cyan-600' : 'bg-slate-700'}`}
+                            >
+                                <div className={`w-4 h-4 rounded-full bg-white shadow-sm transition-transform duration-300 ${notifications ? 'translate-x-6' : 'translate-x-0'}`}></div>
+                            </button>
                         </div>
-                        <p className="mt-4 text-sm text-secondary">
-                            The application currently follows your system's color scheme preference automatically.
-                        </p>
-                    </Card>
-                )}
-            </div>
 
-            {/* Since I cannot easily hook into useNavigate from outside the component unless rewriting, I will use window.location.hash for safer ref within map or just component. Wait, this is a component. I should use navigate. */}
-            <div className="mt-8 flex justify-center pb-8">
-                <Button variant="text" style={{ color: 'var(--md-sys-color-error)' }} onClick={() => window.location.hash = '#/'}>
-                    Sign Out of Account
-                </Button>
+                        {/* Toggle Item */}
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <h3 className="text-white font-medium">Interface Sounds</h3>
+                                <p className="text-slate-500 text-sm">Play futuristic UI sound effects</p>
+                            </div>
+                            <button
+                                onClick={() => setSound(!sound)}
+                                className={`w-12 h-6 rounded-full p-1 transition-colors duration-300 ${sound ? 'bg-cyan-600' : 'bg-slate-700'}`}
+                            >
+                                <div className={`w-4 h-4 rounded-full bg-white shadow-sm transition-transform duration-300 ${sound ? 'translate-x-6' : 'translate-x-0'}`}></div>
+                            </button>
+                        </div>
+
+                        {/* Toggle Item */}
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <h3 className="text-white font-medium">Cyber Mode</h3>
+                                <p className="text-slate-500 text-sm">Enable high-contrast futuristic theme</p>
+                            </div>
+                            <button
+                                onClick={() => setDarkMode(!darkMode)}
+                                className={`w-12 h-6 rounded-full p-1 transition-colors duration-300 bg-cyan-600 cursor-not-allowed opacity-80`}
+                                title="Theme locked by administrator"
+                            >
+                                <div className={`w-4 h-4 rounded-full bg-white shadow-sm translate-x-6`}></div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Security */}
+                <div className="glass-panel p-6">
+                    <h2 className="text-xl font-bold text-emerald-400 mb-4 border-b border-white/10 pb-2">Security</h2>
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <h3 className="text-white font-medium">Last Login</h3>
+                            <p className="text-slate-500 text-sm">Today at 09:42 AM from IP 192.168.1.1</p>
+                        </div>
+                        <button className="text-red-400 hover:text-red-300 text-sm font-medium border border-red-500/30 px-3 py-2 rounded-lg hover:bg-red-900/20 transition-colors">
+                            Revoke Sessions
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
     );

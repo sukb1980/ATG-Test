@@ -3,9 +3,17 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
 import AppShell from './components/layout/AppShell';
 
-// Lazy load pages for performance
+// Lazy Load Pages
 const Login = React.lazy(() => import('./pages/Login'));
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
+const HRAdmin = React.lazy(() => import('./pages/HRAdmin'));
+const Sales = React.lazy(() => import('./pages/Sales'));
+const Finance = React.lazy(() => import('./pages/Finance'));
+const ITDesk = React.lazy(() => import('./pages/ITDesk')); // Make sure this matches filename
+const Legal = React.lazy(() => import('./pages/Legal'));
+const Marketing = React.lazy(() => import('./pages/Marketing'));
+const Engineering = React.lazy(() => import('./pages/Engineering'));
+const Settings = React.lazy(() => import('./pages/Settings'));
 
 // Loading Fallback
 const LoadingScreen = () => (
@@ -22,10 +30,18 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
 
-            {/* Protected Routes directly under AppShell for now */}
             <Route element={<AppShell />}>
               <Route path="/dashboard" element={<Dashboard />} />
-              {/* Placeholders for other routes to prevent crashes if visited */}
+              <Route path="/hr-admin" element={<HRAdmin />} />
+              <Route path="/sales" element={<Sales />} />
+              <Route path="/finance" element={<Finance />} />
+              <Route path="/it-desk" element={<ITDesk />} />
+              <Route path="/legal" element={<Legal />} />
+              <Route path="/marketing" element={<Marketing />} />
+              <Route path="/engineering" element={<Engineering />} />
+              <Route path="/settings" element={<Settings />} />
+
+              {/* Fallback */}
               <Route path="*" element={<Dashboard />} />
             </Route>
           </Routes>
