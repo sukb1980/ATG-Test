@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
+import KoreAIButton from '../common/KoreAIButton';
 
 const NAV_ITEMS = [
     { label: 'Overview', path: '/dashboard', icon: 'dashboard' },
@@ -7,6 +8,9 @@ const NAV_ITEMS = [
     { label: 'Sales', path: '/sales', icon: 'trending_up' },
     { label: 'Finance', path: '/finance', icon: 'account_balance' },
     { label: 'IT Desk', path: '/it-desk', icon: 'desktop_windows' },
+    { label: 'Legal', path: '/legal', icon: 'gavel' },
+    { label: 'Marketing', path: '/marketing', icon: 'ads_click' },
+    { label: 'Engineering', path: '/engineering', icon: 'terminal' },
     { label: 'Settings', path: '/settings', icon: 'settings' },
 ];
 
@@ -14,6 +18,7 @@ export default function AppShell() {
     const navigate = useNavigate();
     const location = useLocation();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isChatOpen, setIsChatOpen] = useState(false); // State for Chatbot
 
     const handleLogout = () => {
         navigate('/');
@@ -33,13 +38,13 @@ export default function AppShell() {
                 </div>
 
                 {/* Nav */}
-                <nav className="flex-1 py-8 space-y-1 overflow-y-auto">
+                <nav className="flex-1 py-8 space-y-1 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10">
                     {NAV_ITEMS.map((item) => (
                         <NavLink
                             key={item.path}
                             to={item.path}
                             className={({ isActive }) =>
-                                `flex items-center gap-4 px-8 py-4 transition-all duration-300 group relative
+                                `flex items-center gap-4 px-8 py-3 transition-all duration-300 group relative
                                 ${isActive ? 'bg-white/5 text-white' : 'text-slate-400 hover:text-white hover:bg-white/5'}`
                             }
                         >
@@ -58,20 +63,21 @@ export default function AppShell() {
                 </nav>
 
                 {/* User/Logout */}
-                <div className="p-6 bg-[#0A1D36]">
+                <div className="p-6 bg-[#0A1D36] border-t border-white/5">
                     <div className="flex items-center gap-4 mb-6">
                         <div className="w-10 h-10 rounded-full bg-white text-brand-navy flex items-center justify-center font-display font-bold text-lg">
-                            AK
+                            LA
                         </div>
                         <div className="overflow-hidden">
-                            <p className="text-sm font-bold text-white truncate">Alexander K.</p>
+                            <p className="text-sm font-bold text-white truncate">Latif</p>
                             <p className="text-xs text-slate-400 truncate uppercase tracking-wider">Admin</p>
                         </div>
                     </div>
                     <button
                         onClick={handleLogout}
-                        className="w-full flex items-center justify-center gap-2 py-3 border border-white/10 text-white/70 hover:text-white hover:border-white/30 rounded-sm transition-all text-sm uppercase tracking-wider"
+                        className="w-full flex items-center justify-center gap-2 py-3 border border-white/10 text-white/70 hover:text-white hover:border-white/30 hover:bg-white/5 rounded-sm transition-all text-sm uppercase tracking-wider group"
                     >
+                        <span className="material-symbols-outlined text-lg group-hover:text-brand-orange transition-colors">logout</span>
                         <span>Sign Out</span>
                     </button>
                 </div>
@@ -89,9 +95,12 @@ export default function AppShell() {
                 </header>
 
                 {/* Content Area */}
-                <div className="flex-1 overflow-y-auto z-10 p-8 md:p-12 scrollbar-thin">
+                <div className="flex-1 overflow-y-auto z-10 p-6 md:p-12 scrollbar-thin">
                     <Outlet />
                 </div>
+
+                {/* Chatbot Button Integration */}
+                <KoreAIButton isOpen={isChatOpen} onToggle={() => setIsChatOpen(!isChatOpen)} />
             </main>
 
             {/* Mobile Menu Overlay */}
@@ -103,7 +112,7 @@ export default function AppShell() {
                             <span className="material-symbols-outlined text-3xl">close</span>
                         </button>
                     </div>
-                    <nav className="flex-1 space-y-2">
+                    <nav className="flex-1 space-y-2 overflow-y-auto">
                         {NAV_ITEMS.map((item) => (
                             <NavLink
                                 key={item.path}
@@ -119,6 +128,13 @@ export default function AppShell() {
                             </NavLink>
                         ))}
                     </nav>
+                    <button
+                        onClick={handleLogout}
+                        className="mt-6 w-full flex items-center justify-center gap-2 py-4 border border-white/10 text-white/70 hover:text-white hover:bg-white/5 rounded-sm transition-all text-sm uppercase tracking-wider"
+                    >
+                        <span className="material-symbols-outlined">logout</span>
+                        <span>Sign Out</span>
+                    </button>
                 </div>
             )}
         </div>

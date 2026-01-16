@@ -3,7 +3,7 @@ import React from 'react';
 export default function Sales() {
     return (
         <div className="w-full fade-in">
-            <h1 className="text-3xl font-bold text-white mb-8 font-display tracking-tight flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-brand-navy mb-8 font-display tracking-tight flex items-center gap-3">
                 <span className="material-symbols-outlined text-3xl text-blue-500">monitoring</span>
                 SALES OVERVIEW
             </h1>
@@ -14,7 +14,7 @@ export default function Sales() {
                     <div key={label} className="glass-panel p-5 relative overflow-hidden group">
                         <div className="relative z-10">
                             <p className="text-slate-400 text-xs uppercase tracking-widest mb-1">{label}</p>
-                            <p className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                            <p className="text-2xl font-bold text-brand-navy group-hover:text-blue-600 transition-colors">
                                 {i === 0 ? '$4.2M' : i === 1 ? '142' : i === 2 ? '24%' : '$32k'}
                             </p>
                         </div>
@@ -31,15 +31,15 @@ export default function Sales() {
                 {/* Chart Mockup */}
                 <div className="lg:col-span-2 glass-panel p-6 min-h-[400px] flex flex-col">
                     <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-xl font-bold text-white">Revenue Performance</h2>
-                        <select className="bg-black/30 border border-white/10 text-slate-300 text-xs rounded px-2 py-1">
+                        <h2 className="text-xl font-bold text-brand-navy">Revenue Performance</h2>
+                        <select className="bg-white border border-brand-border text-brand-charcoal text-xs rounded px-2 py-1 focus:outline-none focus:border-brand-orange">
                             <option>Q4 2025</option>
                             <option>Q3 2025</option>
                         </select>
                     </div>
 
                     {/* CSS Bar Chart Simulation */}
-                    <div className="flex-1 flex items-end justify-between px-4 gap-4 border-b border-white/5 pb-2">
+                    <div className="flex-1 flex items-end justify-between px-4 gap-4 border-b border-brand-border pb-2">
                         {[40, 65, 45, 80, 55, 90, 70, 85].map((h, i) => (
                             <div key={i} className="w-full bg-blue-900/30 rounded-t relative group">
                                 <div
@@ -61,7 +61,7 @@ export default function Sales() {
 
                 {/* Pipeline */}
                 <div className="glass-panel p-6">
-                    <h2 className="text-xl font-bold text-white mb-6">Top Deals</h2>
+                    <h2 className="text-xl font-bold text-brand-navy mb-6">Top Deals</h2>
                     <div className="space-y-4">
                         {[
                             { name: 'OmniConsumer Corp', val: '$1.2M', stage: 'Negotiation' },
@@ -69,10 +69,10 @@ export default function Sales() {
                             { name: 'Tyrell Corp', val: '$2.4M', stage: 'Proposal' },
                             { name: 'Weyland-Yutani', val: '$500k', stage: 'Closing' }
                         ].map((deal) => (
-                            <div key={deal.name} className="border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                            <div key={deal.name} className="border-b border-brand-border pb-3 last:border-0 last:pb-0">
                                 <div className="flex justify-between items-start mb-1">
-                                    <h4 className="text-white text-sm font-bold">{deal.name}</h4>
-                                    <span className="text-cyan-400 font-mono text-xs">{deal.val}</span>
+                                    <h4 className="text-brand-navy text-sm font-bold">{deal.name}</h4>
+                                    <span className="text-blue-600 font-mono text-xs font-bold">{deal.val}</span>
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <span className="text-xs text-slate-500">{deal.stage}</span>

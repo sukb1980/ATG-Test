@@ -19,7 +19,7 @@ export default function Dashboard() {
             <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between border-b border-brand-border pb-6">
                 <div>
                     <h1 className="text-4xl font-display font-medium text-brand-navy mb-2">Executive Overview</h1>
-                    <p className="text-slate-500 text-lg font-light">Welcome back, Alexander.</p>
+                    <p className="text-slate-500 text-lg font-light">Welcome back, Latif.</p>
                 </div>
                 <div className="mt-4 md:mt-0">
                     <span className="text-sm text-brand-orange uppercase tracking-widest font-bold">Today: Jan 17, 2026</span>
