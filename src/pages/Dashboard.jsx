@@ -1,77 +1,76 @@
 import React from 'react';
-import HeroChatInterface from '../components/common/HeroChatInterface';
 import { useNavigate } from 'react-router-dom';
 
-const DEPARTMENTS = [
-    { title: 'HR Administration', icon: 'diversity_3', path: '/hr-admin', iconColor: 'text-rose-400', desc: 'Onboarding, Offboarding, & Profile Management' },
-    { title: 'Sales', icon: 'monitoring', path: '/sales', iconColor: 'text-blue-400', desc: 'Pipeline, Revenue, & AI Outreach' },
-    { title: 'Marketing', icon: 'ads_click', path: '/marketing', iconColor: 'text-purple-400', desc: 'Campaigns, SEO, & Content Generation' },
-    { title: 'Finance', icon: 'account_balance_wallet', path: '/finance', iconColor: 'text-emerald-400', desc: 'Invoices, Budget, & Risk Analysis' },
-    { title: 'Engineering', icon: 'terminal', path: '/engineering', iconColor: 'text-orange-400', desc: 'Code Analysis, Docs, & Support Tickets' },
-    { title: 'Legal', icon: 'gavel', path: '/legal', iconColor: 'text-amber-400', desc: 'Contracts, Compliance, & Regulations' },
+const MODULES = [
+    { title: 'HR Admin', icon: 'diversity_3', path: '/hr-admin', color: 'text-pink-400', desc: 'Staff Profiles & Leave' },
+    { title: 'Sales', icon: 'monitoring', path: '/sales', color: 'text-blue-400', desc: 'Revenue & Pipeline' },
+    { title: 'Finance', icon: 'account_balance_wallet', path: '/finance', color: 'text-emerald-400', desc: 'Invoices & Payroll' },
+    { title: 'IT Desk', icon: 'support_agent', path: '/it-desk', color: 'text-purple-400', desc: 'Tickets & Assets' },
+    { title: 'Legal', icon: 'gavel', path: '/legal', color: 'text-amber-400', desc: 'Compliance Docs' },
+    { title: 'Settings', icon: 'settings', path: '/settings', color: 'text-slate-400', desc: 'System Config' },
 ];
 
 export default function Dashboard() {
     const navigate = useNavigate();
 
-    // Force scroll to top on mount
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
-        <div className="flex flex-col gap-8 fade-in pb-20 max-w-7xl mx-auto pt-4">
-
-            {/* AI Hero Section */}
-            <section>
-                <h1 className="text-2xl font-bold text-cyan-50 mb-6 px-1 flex items-center gap-3 tracking-widest uppercase font-display border-l-4 border-cyan-500 pl-4 bg-gradient-to-r from-cyan-900/20 to-transparent py-2">
-                    Enterprise Command Center
+        <div className="max-w-6xl mx-auto w-full fade-in">
+            {/* Header */}
+            <div className="mb-10">
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 font-display tracking-tight flex items-center gap-3">
+                    <span className="w-2 h-8 bg-cyan-500 rounded-full shadow-[0_0_10px_#00f3ff]"></span>
+                    COMMAND CENTER
                 </h1>
-                <HeroChatInterface />
-            </section>
+                <p className="text-slate-400 text-lg">Welcome back, Commander. Systems detected normal.</p>
+            </div>
 
-            {/* Department Grid */}
-            <section>
-                <div className="flex justify-between items-end mb-6 px-1">
-                    <h2 className="text-lg text-cyan-400/80 font-medium flex items-center gap-2 uppercase tracking-widest">
-                        <span className="material-symbols-outlined text-lg">grid_view</span>
-                        System Modules
-                    </h2>
+            {/* AI Hero Banner - Static simpler version for stability first */}
+            <div className="w-full glass-panel p-8 mb-10 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/20 to-transparent"></div>
+
+                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div className="flex items-center gap-6">
+                        <div className="w-16 h-16 rounded-full border border-cyan-500/30 flex items-center justify-center bg-black/20 animate-pulse-slow">
+                            <span className="material-symbols-outlined text-4xl text-cyan-400">smart_toy</span>
+                        </div>
+                        <div>
+                            <h2 className="text-xl font-bold text-white mb-1">Cortex AI Online</h2>
+                            <p className="text-cyan-200/60 text-sm">"I am ready to assist with reports and queries."</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
+            {/* Grid */}
+            <div>
+                <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Active Modules</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {DEPARTMENTS.map((dept) => (
+                    {MODULES.map((mod) => (
                         <div
-                            key={dept.title}
-                            className="group cursor-pointer glass-panel p-6 relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,243,255,0.15)] hover:border-cyan-400/50 bg-black/40"
-                            onClick={() => navigate(dept.path)}
+                            key={mod.title}
+                            onClick={() => navigate(mod.path)}
+                            className="glass-panel p-6 cursor-pointer hover:bg-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/30 group"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                            <div className="relative z-10 flex flex-col gap-4">
-                                <div className="flex justify-between items-start">
-                                    <div className="w-14 h-14 rounded-lg bg-black/60 border border-white/5 flex items-center justify-center group-hover:border-white/20 transition-all shadow-inner">
-                                        <span className={`material-symbols-outlined text-[32px] ${dept.iconColor} group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] transition-all`}>{dept.icon}</span>
-                                    </div>
-                                    <div className="w-8 h-8 rounded bg-cyan-500/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0">
-                                        <span className="material-symbols-outlined text-cyan-400 text-sm">arrow_outward</span>
-                                    </div>
+                            <div className="flex justify-between items-start mb-4">
+                                <div className={`w-12 h-12 rounded-lg bg-black/40 border border-white/5 flex items-center justify-center group-hover:border-white/20 transition-colors shadow-inner`}>
+                                    <span className={`material-symbols-outlined text-2xl ${mod.color} group-hover:scale-110 transition-transform`}>{mod.icon}</span>
                                 </div>
-
-                                <div>
-                                    <h3 className="text-lg font-bold text-slate-200 group-hover:text-cyan-300 transition-colors tracking-wide">{dept.title}</h3>
-                                    <p className="text-sm text-slate-500 group-hover:text-slate-400 mt-2 leading-relaxed font-light">
-                                        {dept.desc}
-                                    </p>
-                                </div>
+                                <span className="material-symbols-outlined text-slate-600 group-hover:text-cyan-400 transition-colors">arrow_outward</span>
                             </div>
-
-                            {/* Hover Effect Line */}
-                            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                            <h3 className="text-lg font-bold text-slate-200 group-hover:text-white mb-1">{mod.title}</h3>
+                            <p className="text-sm text-slate-500 leading-relaxed">{mod.desc}</p>
                         </div>
                     ))}
                 </div>
-            </section>
+            </div>
         </div>
     );
 }
+
+// Simple Fade In Animation embedded
+const style = document.createElement('style');
+style.innerHTML = `
+  .fade-in { animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+`;
+document.head.appendChild(style);
