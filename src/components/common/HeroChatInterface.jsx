@@ -29,7 +29,9 @@ export default function HeroChatInterface() {
 
     // Scroll to bottom of chat
     useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        if (messagesEndRef.current) {
+            messagesEndRef.current.parentNode.scrollTop = messagesEndRef.current.parentNode.scrollHeight;
+        }
     }, [messages]);
 
     // Speech Recognition Setup
@@ -124,8 +126,8 @@ export default function HeroChatInterface() {
                         <div
                             key={msg.id}
                             className={`max-w-[85%] p-4 rounded-2xl text-sm leading-relaxed shadow-sm ${msg.isBot
-                                    ? 'bg-white rounded-bl-sm text-slate-700 border border-slate-100 self-start'
-                                    : 'bg-blue-600 text-white rounded-br-sm self-end'
+                                ? 'bg-white rounded-bl-sm text-slate-700 border border-slate-100 self-start'
+                                : 'bg-blue-600 text-white rounded-br-sm self-end'
                                 }`}
                         >
                             {msg.text}
@@ -140,8 +142,8 @@ export default function HeroChatInterface() {
                         <button
                             onClick={toggleListening}
                             className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${isListening
-                                    ? 'bg-red-500 text-white animate-pulse'
-                                    : 'bg-white text-slate-500 hover:text-blue-600 shadow-sm'
+                                ? 'bg-red-500 text-white animate-pulse'
+                                : 'bg-white text-slate-500 hover:text-blue-600 shadow-sm'
                                 }`}
                         >
                             <span className="material-symbols-outlined">mic</span>

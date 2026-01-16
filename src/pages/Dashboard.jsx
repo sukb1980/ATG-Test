@@ -16,6 +16,11 @@ const DEPARTMENTS = [
 export default function Dashboard() {
     const navigate = useNavigate();
 
+    // Force scroll to top on mount
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="flex flex-col gap-6 fade-in pb-20 max-w-7xl mx-auto">
 
