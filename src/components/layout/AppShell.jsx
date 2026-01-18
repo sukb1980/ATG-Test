@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import KoreAIButton from '../common/KoreAIButton';
 
 const NAV_ITEMS = [
@@ -96,7 +97,18 @@ export default function AppShell() {
 
                 {/* Content Area */}
                 <div className="flex-1 overflow-y-auto z-10 p-6 md:p-12 scrollbar-thin">
-                    <Outlet />
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={location.pathname}
+                            initial={{ opacity: 0, y: 15, scale: 0.98 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -15, scale: 0.98 }}
+                            transition={{ duration: 0.3, ease: 'easeOut' }}
+                            className="h-full"
+                        >
+                            <Outlet />
+                        </motion.div>
+                    </AnimatePresence>
                 </div>
 
                 {/* Chatbot Button Integration */}
