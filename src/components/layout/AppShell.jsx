@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import KoreAIButton from '../common/KoreAIButton';
@@ -20,6 +20,14 @@ export default function AppShell() {
     const location = useLocation();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isChatOpen, setIsChatOpen] = useState(false); // State for Chatbot
+    const contentRef = useRef(null);
+
+    // Scroll to top on navigation change
+    useEffect(() => {
+        if (contentRef.current) {
+            contentRef.current.scrollTop = 0;
+        }
+    }, [location.pathname]);
 
     const handleLogout = () => {
         navigate('/');
@@ -96,7 +104,10 @@ export default function AppShell() {
                 </header>
 
                 {/* Content Area */}
-                <div className="flex-1 overflow-y-auto z-10 p-6 md:p-12 scrollbar-thin">
+                <div
+                    ref={contentRef}
+                    className="flex-1 overflow-y-auto z-10 p-6 md:p-12 scrollbar-thin"
+                >
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={location.pathname}
