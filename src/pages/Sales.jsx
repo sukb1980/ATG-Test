@@ -17,17 +17,17 @@ export default function Sales() {
                 SALES OVERVIEW
             </h1>
 
-            {/* Metrics */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                {['Total Revenue', 'Active Deals', 'Conversion Rate', 'Avg Deal Size'].map((label, i) => (
-                    <div key={label} className="glass-panel p-5 relative overflow-hidden group">
+            {/* Metrics - 2x2 on mobile, 4 columns on desktop */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
+                {['Total Revenue', 'Active Deals', 'Conv. Rate', 'Avg Deal Size'].map((label, i) => (
+                    <div key={label} className="glass-panel p-4 md:p-5 relative overflow-hidden group">
                         <div className="relative z-10">
-                            <p className="text-slate-400 text-xs uppercase tracking-widest mb-1">{label}</p>
-                            <p className="text-2xl font-bold text-brand-navy group-hover:text-blue-600 transition-colors">
+                            <p className="text-slate-400 text-[10px] md:text-xs uppercase tracking-widest mb-1">{label}</p>
+                            <p className="text-xl md:text-2xl font-bold text-brand-navy group-hover:text-blue-600 transition-colors">
                                 {i === 0 ? (period === 'Q4 2025' ? '$4.2M' : '$3.8M') : i === 1 ? (period === 'Q4 2025' ? '142' : '128') : i === 2 ? '24%' : '$32k'}
                             </p>
                         </div>
-                        <div className="absolute right-0 bottom-0 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <div className="absolute right-0 bottom-0 opacity-10 group-hover:opacity-20 transition-opacity hidden md:block">
                             <span className="material-symbols-outlined text-6xl text-blue-500 -mb-2 -mr-2">trending_up</span>
                         </div>
                     </div>

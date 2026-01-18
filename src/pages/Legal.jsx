@@ -8,6 +8,26 @@ export default function Legal() {
                 LEGAL & COMPLIANCE
             </h1>
 
+            {/* Legal Stats Row - 2x2 on mobile, 4 columns on desktop */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10">
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">42</span>
+                    <span className="text-[10px] md:text-sm text-amber-500 uppercase tracking-widest">Active Contracts</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">05</span>
+                    <span className="text-[10px] md:text-sm text-amber-500 uppercase tracking-widest">Pending Sign</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">98%</span>
+                    <span className="text-[10px] md:text-sm text-amber-500 uppercase tracking-widest">Compliance</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">02</span>
+                    <span className="text-[10px] md:text-sm text-amber-500 uppercase tracking-widest">New Claims</span>
+                </div>
+            </div>
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2 glass-panel p-6">
                     <h2 className="text-xl font-bold text-brand-navy mb-6">Document Library</h2>

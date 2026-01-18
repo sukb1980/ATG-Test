@@ -8,6 +8,26 @@ export default function Engineering() {
                 ENGINEERING
             </h1>
 
+            {/* Engineering Stats Row - 2x2 on mobile, 4 columns on desktop */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10">
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">03</span>
+                    <span className="text-[10px] md:text-sm text-orange-400 uppercase tracking-widest">Active Sprints</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">12/d</span>
+                    <span className="text-[10px] md:text-sm text-orange-400 uppercase tracking-widest">Deployments</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">99.9%</span>
+                    <span className="text-[10px] md:text-sm text-orange-400 uppercase tracking-widest">Uptime</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">15</span>
+                    <span className="text-[10px] md:text-sm text-orange-400 uppercase tracking-widest">Open PRs</span>
+                </div>
+            </div>
+
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                 <div className="lg:col-span-3 glass-panel p-6">
                     <h2 className="text-xl font-bold text-brand-navy mb-6">Active Sprints</h2>

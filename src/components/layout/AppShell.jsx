@@ -24,9 +24,24 @@ export default function AppShell() {
 
     // Scroll to top on navigation change
     useEffect(() => {
-        if (contentRef.current) {
-            contentRef.current.scrollTop = 0;
-        }
+        const scrollToTop = () => {
+            if (contentRef.current) {
+                contentRef.current.scrollTop = 0;
+            }
+            window.scrollTo(0, 0);
+        };
+
+        // Initial reset
+        scrollToTop();
+
+        // Small delay to ensure it happens after transition starts/completes
+        const timeoutId = setTimeout(scrollToTop, 100);
+        const longTimeoutId = setTimeout(scrollToTop, 300);
+
+        return () => {
+            clearTimeout(timeoutId);
+            clearTimeout(longTimeoutId);
+        };
     }, [location.pathname]);
 
     const handleLogout = () => {

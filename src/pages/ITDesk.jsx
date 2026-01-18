@@ -1,35 +1,97 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function ITDesk() {
+    const [tickets, setTickets] = useState([
+        { id: '#INC-001', sub: 'VPN Access Issues', stat: 'In Progress', up: '2 mins ago' },
+        { id: '#REQ-042', sub: 'New Monitor Request', stat: 'Pending Approval', up: '1 day ago' },
+    ]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [newTicketSub, setNewTicketSub] = useState('');
+
+    const handleCreateTicket = () => {
+        if (!newTicketSub.trim()) return;
+        const newTicket = {
+            id: `#INC-00${tickets.length + 1}`,
+            sub: newTicketSub,
+            stat: 'Pending',
+            up: 'Just now'
+        };
+        setTickets([newTicket, ...tickets]);
+        setNewTicketSub('');
+        setIsModalOpen(false);
+    };
+
     return (
-        <div className="w-full fade-in">
+        <div className="w-full fade-in relative">
             <div className="flex justify-between items-end mb-8">
                 <h1 className="text-3xl font-bold text-brand-navy font-display tracking-tight flex items-center gap-3">
                     <span className="material-symbols-outlined text-3xl text-purple-500">support_agent</span>
                     IT SERVICE DESK
                 </h1>
-                <button className="btn-primary flex items-center gap-2 py-2 px-4 shadow-[0_0_15px_rgba(192,132,252,0.3)] border-purple-400/30 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500">
+                <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="flex items-center gap-2 py-2 px-6 rounded-full bg-purple-100 text-purple-600 border border-purple-200 hover:bg-purple-200 transition-all font-bold text-sm shadow-sm"
+                >
                     <span className="material-symbols-outlined text-sm">add</span>
                     New Ticket
                 </button>
             </div>
 
-            {/* Quick Access */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="glass-panel p-6 border-l-4 border-l-red-500">
-                    <h3 className="text-slate-400 text-xs uppercase mb-2">My Open Tickets</h3>
-                    <p className="text-3xl font-bold text-brand-navy">2</p>
-                    <p className="text-xs text-red-400 mt-1">1 Critical Priority</p>
+            {/* Modal */}
+            {isModalOpen && (
+                <div className="fixed inset-0 bg-brand-navy/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                    <div className="glass-panel p-8 max-w-md w-full shadow-2xl animate-fade-in border-t-4 border-purple-400">
+                        <h2 className="text-2xl font-bold text-brand-navy mb-4">Create New Ticket</h2>
+                        <div className="mb-6">
+                            <label className="block text-xs uppercase tracking-widest text-slate-400 mb-2">Issue Subject</label>
+                            <input
+                                type="text"
+                                value={newTicketSub}
+                                onChange={(e) => setNewTicketSub(e.target.value)}
+                                placeholder="e.g. Email access, Printer offline..."
+                                className="w-full bg-white border border-brand-border rounded-lg p-3 text-brand-navy focus:outline-none focus:border-purple-400"
+                                autoFocus
+                            />
+                        </div>
+                        <div className="flex gap-4">
+                            <button
+                                onClick={handleCreateTicket}
+                                className="flex-1 py-3 rounded-lg bg-purple-100 text-purple-600 font-bold hover:bg-purple-200 transition-colors"
+                            >
+                                Submit Request
+                            </button>
+                            <button
+                                onClick={() => setIsModalOpen(false)}
+                                className="px-6 py-3 rounded-lg border border-brand-border text-slate-400 font-bold hover:bg-brand-silver transition-colors"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div className="glass-panel p-6 border-l-4 border-l-emerald-500">
-                    <h3 className="text-slate-400 text-xs uppercase mb-2">Hardware</h3>
-                    <p className="text-3xl font-bold text-brand-navy">Good</p>
-                    <p className="text-xs text-emerald-400 mt-1">All Assets Healthy</p>
+            )}
+
+            {/* Quick Access - 2x2 on mobile, 4 columns on desktop */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
+                <div className="glass-panel p-4 md:p-6 border-l-4 border-l-red-500 text-center md:text-left">
+                    <h3 className="text-slate-400 text-[10px] md:text-xs uppercase mb-1 md:mb-2">My Tickets</h3>
+                    <p className="text-2xl md:text-3xl font-bold text-brand-navy">{tickets.length}</p>
+                    <p className="text-[10px] text-red-400 mt-1">Status Active</p>
                 </div>
-                <div className="glass-panel p-6 border-l-4 border-l-purple-500">
-                    <h3 className="text-slate-400 text-xs uppercase mb-2">Knowledge Base</h3>
-                    <p className="text-3xl font-bold text-brand-navy">Search</p>
-                    <p className="text-xs text-purple-400 mt-1">205 Articles Available</p>
+                <div className="glass-panel p-4 md:p-6 border-l-4 border-l-emerald-500 text-center md:text-left">
+                    <h3 className="text-slate-400 text-[10px] md:text-xs uppercase mb-1 md:mb-2">Hardware</h3>
+                    <p className="text-2xl md:text-3xl font-bold text-brand-navy">Good</p>
+                    <p className="text-[10px] text-emerald-400 mt-1">Healthy</p>
+                </div>
+                <div className="glass-panel p-4 md:p-6 border-l-4 border-l-purple-500 text-center md:text-left">
+                    <h3 className="text-slate-400 text-[10px] md:text-xs uppercase mb-1 md:mb-2">Resolution</h3>
+                    <p className="text-2xl md:text-3xl font-bold text-brand-navy">1.2h</p>
+                    <p className="text-[10px] text-purple-400 mt-1">Avg Time</p>
+                </div>
+                <div className="glass-panel p-4 md:p-6 border-l-4 border-l-indigo-500 text-center md:text-left">
+                    <h3 className="text-slate-400 text-[10px] md:text-xs uppercase mb-1 md:mb-2">KB Articles</h3>
+                    <p className="text-2xl md:text-3xl font-bold text-brand-navy">205</p>
+                    <p className="text-[10px] text-indigo-400 mt-1">Available</p>
                 </div>
             </div>
 
@@ -48,10 +110,7 @@ export default function ITDesk() {
                             </tr>
                         </thead>
                         <tbody className="text-sm">
-                            {[
-                                { id: '#INC-001', sub: 'VPN Access Issues', stat: 'In Progress', up: '2 mins ago' },
-                                { id: '#REQ-042', sub: 'New Monitor Request', stat: 'Pending Approval', up: '1 day ago' },
-                            ].map((t) => (
+                            {tickets.map((t) => (
                                 <tr key={t.id} className="border-b border-brand-border hover:bg-brand-silver transition-colors">
                                     <td className="py-4 text-purple-400 font-mono">{t.id}</td>
                                     <td className="py-4 text-brand-navy font-medium">{t.sub}</td>

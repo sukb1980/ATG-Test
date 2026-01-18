@@ -8,22 +8,28 @@ export default function Marketing() {
                 MARKETING HUB
             </h1>
 
+            {/* Marketing Stats Row - 2x2 on mobile, 4 columns on desktop */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10">
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">45k</span>
+                    <span className="text-[10px] md:text-sm text-purple-400 uppercase tracking-widest">Impressions</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">3.2%</span>
+                    <span className="text-[10px] md:text-sm text-purple-400 uppercase tracking-widest">CTR</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">850</span>
+                    <span className="text-[10px] md:text-sm text-purple-400 uppercase tracking-widest">Leads</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">4.5x</span>
+                    <span className="text-[10px] md:text-sm text-purple-400 uppercase tracking-widest">Budget ROI</span>
+                </div>
+            </div>
+
             <div className="glass-panel p-8 text-center mb-8">
                 <h2 className="text-2xl font-bold text-brand-navy mb-4">Current Campaign: "Future Forward"</h2>
-                <div className="flex justify-center gap-4 mb-6">
-                    <div className="text-center px-6 border-r border-brand-border/20">
-                        <p className="text-3xl font-bold text-brand-navy">45k</p>
-                        <p className="text-xs text-purple-400 uppercase">Impressions</p>
-                    </div>
-                    <div className="text-center px-6 border-r border-brand-border/20">
-                        <p className="text-3xl font-bold text-brand-navy">3.2%</p>
-                        <p className="text-xs text-purple-400 uppercase">CTR</p>
-                    </div>
-                    <div className="text-center px-6">
-                        <p className="text-3xl font-bold text-brand-navy">850</p>
-                        <p className="text-xs text-purple-400 uppercase">Leads</p>
-                    </div>
-                </div>
                 <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
                     <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-[65%]"></div>
                 </div>

@@ -8,6 +8,26 @@ export default function Finance() {
                 FINANCE & PAYROLL
             </h1>
 
+            {/* Finance Stats Row - 2x2 on mobile, 4 columns on desktop */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10">
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">$2.4M</span>
+                    <span className="text-[10px] md:text-sm text-emerald-500 uppercase tracking-widest">Total Spend</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">14</span>
+                    <span className="text-[10px] md:text-sm text-emerald-500 uppercase tracking-widest">Pending Payouts</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">82%</span>
+                    <span className="text-[10px] md:text-sm text-emerald-500 uppercase tracking-widest">Budget Used</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">9.8</span>
+                    <span className="text-[10px] md:text-sm text-emerald-500 uppercase tracking-widest">Audit Score</span>
+                </div>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Actions */}
                 <div className="space-y-6">

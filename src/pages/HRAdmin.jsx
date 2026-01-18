@@ -14,19 +14,23 @@ export default function HRAdmin() {
                 HUMAN RESOURCES
             </h1>
 
-            {/* Stats Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="glass-panel p-6 flex flex-col items-center justify-center text-center">
-                    <span className="text-4xl font-bold text-brand-navy mb-1">1,240</span>
-                    <span className="text-sm text-pink-400 uppercase tracking-widest">Total Staff</span>
+            {/* Stats Row - 2x2 on mobile, 4 columns on desktop */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">1,240</span>
+                    <span className="text-[10px] md:text-sm text-pink-400 uppercase tracking-widest">Total Staff</span>
                 </div>
-                <div className="glass-panel p-6 flex flex-col items-center justify-center text-center">
-                    <span className="text-4xl font-bold text-brand-navy mb-1">12</span>
-                    <span className="text-sm text-pink-400 uppercase tracking-widest">On Leave</span>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">12</span>
+                    <span className="text-[10px] md:text-sm text-pink-400 uppercase tracking-widest">On Leave</span>
                 </div>
-                <div className="glass-panel p-6 flex flex-col items-center justify-center text-center">
-                    <span className="text-4xl font-bold text-brand-navy mb-1">5</span>
-                    <span className="text-sm text-pink-400 uppercase tracking-widest">Open Roles</span>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">5</span>
+                    <span className="text-[10px] md:text-sm text-pink-400 uppercase tracking-widest">Open Roles</span>
+                </div>
+                <div className="glass-panel p-4 md:p-6 flex flex-col items-center justify-center text-center">
+                    <span className="text-2xl md:text-4xl font-bold text-brand-navy mb-1">08</span>
+                    <span className="text-[10px] md:text-sm text-pink-400 uppercase tracking-widest">Interviews</span>
                 </div>
             </div>
 
