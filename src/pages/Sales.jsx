@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Sales() {
     return (
-        <div className="w-full fade-in">
+        <div className="w-full animate-fade-in">
             <h1 className="text-3xl font-bold text-brand-navy mb-8 font-display tracking-tight flex items-center gap-3">
                 <span className="material-symbols-outlined text-3xl text-blue-500">monitoring</span>
                 SALES OVERVIEW
@@ -39,9 +39,9 @@ export default function Sales() {
                     </div>
 
                     {/* CSS Bar Chart Simulation */}
-                    <div className="flex-1 flex items-end justify-between px-4 gap-4 border-b border-brand-border pb-2">
+                    <div className="flex-1 flex items-end justify-between px-4 gap-4 border-b border-brand-border pb-2 h-64">
                         {[40, 65, 45, 80, 55, 90, 70, 85].map((h, i) => (
-                            <div key={i} className="w-full bg-blue-900/30 rounded-t relative group">
+                            <div key={i} className="w-full bg-blue-900/30 rounded-t relative group h-full">
                                 <div
                                     className="absolute bottom-0 w-full bg-gradient-to-t from-blue-600 to-cyan-400 rounded-t transition-all duration-1000 group-hover:opacity-100 opacity-80"
                                     style={{ height: `${h}%` }}
