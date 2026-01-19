@@ -12,6 +12,7 @@ const NAV_ITEMS = [
     { label: 'Legal', path: '/legal', icon: 'gavel' },
     { label: 'Marketing', path: '/marketing', icon: 'ads_click' },
     { label: 'Engineering', path: '/engineering', icon: 'terminal' },
+    { label: 'Games', path: '/games', icon: 'sports_esports' },
     { label: 'Settings', path: '/settings', icon: 'settings' },
 ];
 

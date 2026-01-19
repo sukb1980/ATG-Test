@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import GamingCarousel from '../components/common/GamingCarousel';
 
 const MODULES = [
     { title: 'HR Admin', icon: 'diversity_3', path: '/hr-admin', desc: 'Employee Profiles & Leave' },
@@ -63,6 +64,9 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
+
+            {/* Gaming Carousel */}
+            <GamingCarousel />
 
             {/* Module Grid - 2 columns on mobile, 3 on desktop */}
             <div>

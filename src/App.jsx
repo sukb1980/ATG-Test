@@ -14,6 +14,8 @@ const Legal = React.lazy(() => import('./pages/Legal'));
 const Marketing = React.lazy(() => import('./pages/Marketing'));
 const Engineering = React.lazy(() => import('./pages/Engineering'));
 const Settings = React.lazy(() => import('./pages/Settings'));
+const Games = React.lazy(() => import('./pages/Games'));
+
 
 // Loading Fallback
 const LoadingScreen = () => (
@@ -40,6 +42,8 @@ function App() {
               <Route path="/marketing" element={<Marketing />} />
               <Route path="/engineering" element={<Engineering />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/games" element={<Games />} />
+
 
               {/* Fallback */}
               <Route path="*" element={<Dashboard />} />
