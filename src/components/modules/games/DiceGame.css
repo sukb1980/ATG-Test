@@ -10,7 +10,7 @@
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    color: #fff;
+    color: #333;
 }
 
 .dice-scene {
@@ -259,7 +259,7 @@
 
 .quest-result h3 {
     margin: 0;
-    color: #fff;
+    color: #333;
     font-size: 1rem;
 }
 
@@ -272,7 +272,7 @@
 
 .quest-result p {
     margin: 0;
-    color: #ccc;
+    color: #666;
     font-size: 0.8rem;
     font-style: italic;
 }

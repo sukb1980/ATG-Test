@@ -14,7 +14,7 @@
 
 .game-title {
     font-family: 'Outfit', sans-serif;
-    color: #fff;
+    color: #333;
     margin-bottom: 2rem;
     font-size: 1.5rem;
     text-transform: uppercase;
@@ -123,7 +123,7 @@
 .result-popup h3 {
     margin: 0;
     font-size: 1.2rem;
-    color: #fff;
+    color: #333;
 }
 
 .result-value {
@@ -135,7 +135,7 @@
 
 .result-popup p {
     margin: 0;
-    color: #ccc;
+    color: #666;
     font-size: 0.9rem;
 }
 

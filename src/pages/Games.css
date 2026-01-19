@@ -44,7 +44,7 @@
 
 .game-nav-item.active {
     background: var(--brand-orange);
-    color: #fff;
+    color: #333;
     border-color: var(--brand-orange);
 }
 
