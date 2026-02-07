@@ -13,9 +13,12 @@
   },
   "homepage": "https://sukb1980.github.io/ATG-Test",
   "dependencies": {
+    "chess.js": "^1.4.0",
     "clsx": "^2.1.1",
+    "firebase": "^12.8.0",
     "framer-motion": "^12.26.2",
     "react": "^19.2.0",
+    "react-chessboard": "^5.8.6",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.10.1"
   },

@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import SpinningWheel from '../components/modules/games/SpinningWheel';
 import DiceGame from '../components/modules/games/DiceGame';
 import SustainabilityMission from '../components/modules/games/SustainabilityMission';
+import ChessGame from '../components/modules/chess/ChessGame';
 import './Games.css';
 
+import ErrorBoundary from '../components/common/ErrorBoundary';
+
 const GAMES_LIST = [
+    { id: 'chess', title: 'Grandmaster AI', icon: 'smart_toy', component: ChessGame },
     { id: 'premier', title: 'Retail Premier League', icon: 'workspace_premium', component: SpinningWheel },
     { id: 'ramadan', title: 'Kindness Quest', icon: 'volunteer_activism', component: DiceGame },
     { id: 'green', title: 'Sustainability', icon: 'eco', component: SustainabilityMission },
 ];
 
 export default function Games() {
-    const [activeGame, setActiveGame] = useState('premier');
+    const [activeGame, setActiveGame] = useState('chess');
 
     const ActiveComponent = GAMES_LIST.find(g => g.id === activeGame)?.component || SpinningWheel;
 
@@ -39,7 +43,9 @@ export default function Games() {
                 </div>
 
                 <div className="game-display-area">
-                    <ActiveComponent />
+                    <ErrorBoundary key={activeGame}>
+                        <ActiveComponent />
+                    </ErrorBoundary>
                 </div>
             </div>
         </div>
