@@ -8,6 +8,7 @@ import { db } from '../../../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useUser } from '../../../context/UserContext';
 import { GeminiChessService } from '../../../services/GeminiChessService';
+import { useChessSpeech } from '../../../hooks/useChessSpeech';
 
 const PIECE_IMAGES = {
     w: {
@@ -42,6 +43,8 @@ export default function ChessGame() {
     const [isGameOver, setIsGameOver] = useState(false);
     const [moveFrom, setMoveFrom] = useState(null);
     const [optionSquares, setOptionSquares] = useState({}); // { 'e2': { background: ... } }
+    const [aiThought, setAiThought] = useState("");
+    const [animatingSquare, setAnimatingSquare] = useState(null); // Square to highlight during animation
 
     async function saveGameToFirestore() {
         if (!user) return; // Don't save for guests
@@ -99,6 +102,16 @@ export default function ChessGame() {
         safeMakeMoveRef.current = safeMakeMove;
     });
 
+    // --- Fresh TTS Implementation ---
+    const { speak, cancel, wakeup } = useChessSpeech();
+
+    // 1. Auto-Speak Effect: "If text is on screen, say it."
+    useEffect(() => {
+        if (aiThought && aiThought.trim() !== "") {
+            speak(aiThought);
+        }
+    }, [aiThought, speak]);
+
     const engineRef = React.useRef(null);
 
     useEffect(() => {
@@ -106,16 +119,49 @@ export default function ChessGame() {
         engineRef.current = newEngine;
 
         // AI Response Handler
-        newEngine.onMessage((data) => {
+        newEngine.onMessage(async (data) => {
             if (data.startsWith("bestmove")) {
                 const bestMove = data.split(" ")[1];
                 if (bestMove) {
-                    // Use the ref to call the latest version of the function with the latest state
+                    const from = bestMove.substring(0, 2);
+                    const to = bestMove.substring(2, 4);
+                    const promo = bestMove.length > 4 ? bestMove[4] : 'q';
+
+                    // 1. Generate Commentary
+                    const currentFen = gameRef.current.fen();
+                    const history = gameRef.current.history({ verbose: true });
+                    const lastMove = history.length > 0 ? history[history.length - 1].san : null;
+
+                    const thought = await GeminiChessService.getMoveCommentary(currentFen, lastMove, bestMove);
+                    setAiThought(thought);
+                    // NOTE: speak() is NOT called here anymore. 
+                    // It is handled by the useEffect above automatically.
+
+                    setEngineStatus("AI Deciding...");
+
+                    // 2. Wait for user to read/listen (min 2.5s)
+                    await new Promise(r => setTimeout(r, 2500));
+
+                    // 3. Animation Sequence
+                    // Highlight Source
+                    setEngineStatus("AI Moving...");
+                    setAnimatingSquare(from);
+                    await new Promise(r => setTimeout(r, 600));
+
+                    // Highlight Dest
+                    setAnimatingSquare(to);
+                    await new Promise(r => setTimeout(r, 600));
+
+                    setAnimatingSquare(null);
+
+                    // 4. Make Move
                     safeMakeMoveRef.current({
-                        from: bestMove.substring(0, 2),
-                        to: bestMove.substring(2, 4),
-                        promotion: bestMove.length > 4 ? bestMove[4] : 'q'
+                        from: from,
+                        to: to,
+                        promotion: promo
                     });
+
+                    setAiThought(""); // Clear thought after move
                     setIsThinking(false);
                     setEngineStatus("Your Turn");
                 }
@@ -126,6 +172,7 @@ export default function ChessGame() {
         return () => {
             newEngine.quit();
             engineRef.current = null;
+            cancel(); // Stop speaking on unmount
         };
     }, []); // Empty dependency array means init once (but twice in strict mode, correctly handling cleanup)
 
@@ -172,6 +219,15 @@ export default function ChessGame() {
                 // Move successful
                 setMoveFrom(null);
                 setOptionSquares({});
+
+                // --- Voice Warm-up ---
+                // Trigger a silent utterance immediately on user interaction 
+                // to ensure browser doesn't block the subsequent AI speech.
+                // --- Voice Warm-up ---
+                // Trigger a silent utterance immediately on user interaction 
+                // to ensure browser doesn't block the subsequent AI speech.
+                wakeup();
+
                 triggerAI();
                 return;
             }
@@ -278,6 +334,7 @@ export default function ChessGame() {
         const piece = game.get(square);
         const isSelected = optionSquares[square]?.isSelected;
         const isOption = optionSquares[square]?.isOption;
+        const isAnimating = animatingSquare === square;
 
         // Base background
         let bgClass = isLight ? "bg-[#ebecd0]" : "bg-[#779556]";
@@ -287,6 +344,8 @@ export default function ChessGame() {
         let overlay = null;
         if (isSelected) {
             bgClass = "bg-[rgba(255,255,0,0.5)]"; // Yellowish highlight
+        } else if (isAnimating) {
+            bgClass = "bg-[rgba(255,165,0,0.7)] shadow-[inset_0_0_20px_rgba(255,165,0,0.8)] transition-all duration-300"; // Orange highlight for AI animation
         } else if (isOption) {
             // Dot overlay
             overlay = <div className="absolute w-3 h-3 bg-[rgba(0,0,0,0.2)] rounded-full"></div>;
@@ -367,7 +426,17 @@ export default function ChessGame() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-7xl mx-auto w-full">
 
                 {/* Main Board Area */}
-                <div className="lg:col-span-8 flex justify-center">
+                <div className="lg:col-span-8 flex justify-center relative">
+                    {/* AI Thought Bubble */}
+                    {aiThought && (
+                        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 z-50 animate-bounce-slow">
+                            <div className="bg-white text-slate-900 px-6 py-3 rounded-2xl shadow-xl border-2 border-blue-400 relative max-w-sm">
+                                <p className="font-bold text-sm italic">"{aiThought}"</p>
+                                {/* Triangle pointer */}
+                                <div className="absolute w-4 h-4 bg-white border-b-2 border-r-2 border-blue-400 rotate-45 -bottom-2 left-1/2 -translate-x-1/2"></div>
+                            </div>
+                        </div>
+                    )}
                     <div className="relative aspect-square w-full max-w-[600px] shadow-2xl rounded-lg overflow-hidden border-4 border-slate-700">
                         {/* 8x8 Grid */}
                         <div className="grid grid-cols-8 grid-rows-8 w-full h-full">
@@ -449,9 +518,11 @@ export default function ChessGame() {
                     </div>
 
                     {/* Features */}
-                    {/* <PastMatches /> */}
-                    <div className="opacity-100">
-                        <VoiceControl onCommand={handleVoiceCommand} isListening={!isGameOver} />
+                    <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
+                        <h3 className="text-sm font-bold text-slate-400 mb-3 uppercase tracking-wider">Voice Settings</h3>
+                        <div className="flex flex-col gap-3">
+                            <VoiceControl onCommand={handleVoiceCommand} isListening={!isGameOver} />
+                        </div>
                     </div>
 
                 </div>
