@@ -44,21 +44,32 @@ export const useChessSpeech = () => {
 
         const utterance = new SpeechSynthesisUtterance(text);
 
-        // Select Voice (Priority: Google -> Natural -> Default)
-        const preferredVoice = voices.find(v =>
-            v.lang.includes('en') &&
-            (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('Daniel'))
-        );
+        // Explicit Male Voice Priority
+        let selectedVoice = voices.find(v => v.name === 'Google UK English Male');
 
-        if (preferredVoice) {
-            utterance.voice = preferredVoice;
+        if (!selectedVoice) {
+            selectedVoice = voices.find(v => v.name === 'Daniel');
+        }
+
+        if (!selectedVoice) { // Any male voice
+            selectedVoice = voices.find(v => v.name.toLowerCase().includes('male') && !v.name.toLowerCase().includes('female'));
+        }
+
+        if (!selectedVoice) { // Mac fallback
+            selectedVoice = voices.find(v => v.name === 'Alex');
+        }
+
+        if (selectedVoice) {
+            utterance.voice = selectedVoice;
+            console.log(`🎤 Voice Selected: ${selectedVoice.name}`);
         } else if (voices.length > 0) {
+            console.warn(`⚠️ No male voice found. Defaulting to: ${voices[0].name}`);
             utterance.voice = voices[0];
         }
 
-        // Standard settings for max compatibility
-        utterance.rate = 1.0;
-        utterance.pitch = 1.0;
+        // Soft, slower, male characteristics
+        utterance.rate = 0.85;
+        utterance.pitch = 0.9;
 
         utterance.onstart = () => setIsSpeaking(true);
         utterance.onend = () => setIsSpeaking(false);
