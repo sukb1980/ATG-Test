@@ -37,34 +37,47 @@ export const useChessSpeech = () => {
 
         console.log(`🔊 Speaking: "${text}"`);
 
+        // Desktop Chrome Fix: Ensure resume is called if stuck
+        if (synth.paused) {
+            console.log("▶️ Resuming paused synth");
+            synth.resume();
+        }
+
         // Cancel previous
         if (synth.speaking) {
             synth.cancel();
         }
 
+        // Safety: Refetch voices if empty (Desktop sometimes loses them)
+        let currentVoices = voices;
+        if (currentVoices.length === 0) {
+            currentVoices = synth.getVoices();
+            console.log(`⚠️ Voices were empty, re-fetched: ${currentVoices.length}`);
+        }
+
         const utterance = new SpeechSynthesisUtterance(text);
 
         // Explicit Male Voice Priority
-        let selectedVoice = voices.find(v => v.name === 'Google UK English Male');
+        let selectedVoice = currentVoices.find(v => v.name === 'Google UK English Male');
 
         if (!selectedVoice) {
-            selectedVoice = voices.find(v => v.name === 'Daniel');
+            selectedVoice = currentVoices.find(v => v.name === 'Daniel');
         }
 
         if (!selectedVoice) { // Any male voice
-            selectedVoice = voices.find(v => v.name.toLowerCase().includes('male') && !v.name.toLowerCase().includes('female'));
+            selectedVoice = currentVoices.find(v => v.name.toLowerCase().includes('male') && !v.name.toLowerCase().includes('female'));
         }
 
         if (!selectedVoice) { // Mac fallback
-            selectedVoice = voices.find(v => v.name === 'Alex');
+            selectedVoice = currentVoices.find(v => v.name === 'Alex');
         }
 
         if (selectedVoice) {
             utterance.voice = selectedVoice;
             console.log(`🎤 Voice Selected: ${selectedVoice.name}`);
-        } else if (voices.length > 0) {
-            console.warn(`⚠️ No male voice found. Defaulting to: ${voices[0].name}`);
-            utterance.voice = voices[0];
+        } else if (currentVoices.length > 0) {
+            console.warn(`⚠️ No male voice found. Defaulting to: ${currentVoices[0].name}`);
+            utterance.voice = currentVoices[0];
         }
 
         // Soft, slower, male characteristics
