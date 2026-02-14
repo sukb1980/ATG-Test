@@ -58,11 +58,17 @@ export const useChessSpeech = () => {
         const utterance = new SpeechSynthesisUtterance(text);
 
         // Explicit Male Voice Priority
-        let selectedVoice = currentVoices.find(v => v.name === 'Google UK English Male');
+        const maleVoiceNames = [
+            'Google UK English Male',
+            'Google US English Male',
+            'Microsoft David', // Windows
+            'Daniel',          // iOS/macOS
+            'Fred',            // iOS/macOS
+            'Rishi',           // iOS
+            'Aaron'            // iOS
+        ];
 
-        if (!selectedVoice) {
-            selectedVoice = currentVoices.find(v => v.name === 'Daniel');
-        }
+        let selectedVoice = currentVoices.find(v => maleVoiceNames.includes(v.name));
 
         if (!selectedVoice) { // Any male voice
             selectedVoice = currentVoices.find(v => v.name.toLowerCase().includes('male') && !v.name.toLowerCase().includes('female'));
