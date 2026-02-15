@@ -57,38 +57,59 @@ export const useChessSpeech = () => {
 
         const utterance = new SpeechSynthesisUtterance(text);
 
-        // Explicit Male Voice Priority
-        const maleVoiceNames = [
-            'Google UK English Male',
-            'Google US English Male',
-            'Microsoft David', // Windows
-            'Daniel',          // iOS/macOS
-            'Fred',            // iOS/macOS
+        // Prioritize Indian English Voices
+        const indianVoiceNames = [
+            'Google English (India)',
+            'Google हिन्दी', // often supports English
             'Rishi',           // iOS
-            'Aaron'            // iOS
+            'Lekha',           // iOS/macOS
+            'Veena',           // iOS/macOS
+            'Sangeeta',        // iOS/macOS
+            'Microsoft Ravi',  // Windows
+            'Microsoft Heera'  // Windows
         ];
 
-        let selectedVoice = currentVoices.find(v => maleVoiceNames.includes(v.name));
+        let selectedVoice = currentVoices.find(v => indianVoiceNames.includes(v.name));
 
-        if (!selectedVoice) { // Any male voice
+        // Fallback: Check for 'en-IN' language code
+        if (!selectedVoice) {
+            selectedVoice = currentVoices.find(v => v.lang === 'en-IN');
+        }
+
+        // Fallback: Standard Male Voices
+        if (!selectedVoice) {
+            const maleVoiceNames = [
+                'Google UK English Male',
+                'Google US English Male',
+                'Microsoft David',
+                'Daniel',
+                'Fred'
+            ];
+            selectedVoice = currentVoices.find(v => maleVoiceNames.includes(v.name));
+        }
+
+        // Final Fallback: Any Male Voice
+        if (!selectedVoice) {
             selectedVoice = currentVoices.find(v => v.name.toLowerCase().includes('male') && !v.name.toLowerCase().includes('female'));
         }
 
-        if (!selectedVoice) { // Mac fallback
+        // Mac Fallback
+        if (!selectedVoice) {
             selectedVoice = currentVoices.find(v => v.name === 'Alex');
         }
 
         if (selectedVoice) {
             utterance.voice = selectedVoice;
-            console.log(`🎤 Voice Selected: ${selectedVoice.name}`);
+            console.log(`🎤 Voice Selected: ${selectedVoice.name} (${selectedVoice.lang})`);
         } else if (currentVoices.length > 0) {
-            console.warn(`⚠️ No male voice found. Defaulting to: ${currentVoices[0].name}`);
+            console.warn(`⚠️ No preferred voice found. Defaulting to: ${currentVoices[0].name}`);
             utterance.voice = currentVoices[0];
         }
 
-        // Soft, slower, male characteristics
-        utterance.rate = 0.85;
-        utterance.pitch = 0.9;
+        // Tuned for more natural, less robotic sound
+        // Standard rate and pitch often sound best for modern AI voices
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
 
         utterance.onstart = () => setIsSpeaking(true);
         utterance.onend = () => setIsSpeaking(false);
