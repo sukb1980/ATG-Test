@@ -336,22 +336,29 @@ export default function ChessGame() {
         const isOption = optionSquares[square]?.isOption;
         const isAnimating = animatingSquare === square;
 
-        // Base background
-        let bgClass = isLight ? "bg-[#ebecd0]" : "bg-[#779556]";
+        // Glassmorphism Base (White & Blue)
+        const baseClass = isLight
+            ? "bg-gradient-to-br from-white/90 to-blue-50/80 backdrop-blur-sm border-white/20"  // Light Squares: Misty White
+            : "bg-gradient-to-br from-blue-600/80 to-blue-800/90 backdrop-blur-md border-blue-500/30"; // Dark Squares: Deep Blue Glass
+
+        let bgClass = `${baseClass}`;
 
         // Highlights using overlay divs or simple background changes
-        // Let's use simple inline styles for highlights to maintain the specific logic
         let overlay = null;
         if (isSelected) {
-            bgClass = "bg-[rgba(255,255,0,0.5)]"; // Yellowish highlight
+            bgClass = "bg-yellow-400/60 shadow-[inset_0_0_20px_rgba(250,204,21,0.6)]"; // Bright Yellow Glow
         } else if (isAnimating) {
-            bgClass = "bg-[rgba(255,165,0,0.7)] shadow-[inset_0_0_20px_rgba(255,165,0,0.8)] transition-all duration-300"; // Orange highlight for AI animation
+            bgClass = "bg-amber-500/60 shadow-[inset_0_0_25px_rgba(245,158,11,0.7)] animate-pulse"; // Amber Pulse
         } else if (isOption) {
-            // Dot overlay
-            overlay = <div className="absolute w-3 h-3 bg-[rgba(0,0,0,0.2)] rounded-full"></div>;
+            // Glass dot overlay
+            overlay = (
+                <div className="absolute w-4 h-4 rounded-full bg-blue-900/40 shadow-[inset_0_1px_4px_rgba(0,0,0,0.2)] backdrop-blur-md"></div>
+            );
             if (piece) {
                 // Capture ring
-                overlay = <div className="absolute w-full h-full border-4 border-[rgba(0,0,0,0.2)] rounded-full"></div>;
+                overlay = (
+                    <div className="absolute w-full h-full border-[6px] border-blue-900/40 rounded-full animate-pulse"></div>
+                );
             }
         }
 
@@ -364,12 +371,12 @@ export default function ChessGame() {
             >
                 {/* File/Rank labels for corners */}
                 {file === boardFiles[0] && (
-                    <span className={`absolute top-0 left-1 text-[10px] font-bold ${isLight ? "text-[#779556]" : "text-[#ebecd0]"}`}>
+                    <span className={`absolute top-0 left-1 text-[10px] font-bold ${isLight ? "text-blue-900/60" : "text-blue-100/60"}`}>
                         {rank}
                     </span>
                 )}
                 {rank === boardRanks[7] && (
-                    <span className={`absolute bottom-0 right-1 text-[10px] font-bold ${isLight ? "text-[#779556]" : "text-[#ebecd0]"}`}>
+                    <span className={`absolute bottom-0 right-1 text-[10px] font-bold ${isLight ? "text-blue-900/60" : "text-blue-100/60"}`}>
                         {file}
                     </span>
                 )}
@@ -379,7 +386,7 @@ export default function ChessGame() {
                     <img
                         src={PIECE_IMAGES[piece.color][piece.type]}
                         alt={`${piece.color}${piece.type}`}
-                        className="w-[85%] h-[85%] select-none pointer-events-none" // prevent image drag interfering with click
+                        className="w-[85%] h-[85%] select-none pointer-events-none drop-shadow-2xl transition-transform hover:scale-110 active:scale-95" // prevent image drag interfering with click
                     />
                 )}
 
@@ -404,7 +411,10 @@ export default function ChessGame() {
 
 
     return (
-        <div className="flex flex-col h-full bg-slate-900 text-white p-4 overflow-y-auto">
+        <div className="flex flex-col h-full w-full bg-[#0a192f] text-white p-4 overflow-y-auto pattern-grid-lg">
+            {/* Background Gradient Orb */}
+            <div className="fixed top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-cyan-600/20 blur-[150px] pointer-events-none" />
+            <div className="fixed bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-blue-700/20 blur-[150px] pointer-events-none" />
             {/* Header */}
             <div className="flex justify-between items-center mb-6">
                 <div>
@@ -437,18 +447,18 @@ export default function ChessGame() {
                             </div>
                         </div>
                     )}
-                    <div className="relative aspect-square w-full max-w-[600px] shadow-2xl rounded-lg overflow-hidden border-4 border-slate-700">
+                    <div className="relative aspect-square w-full max-w-[650px] shadow-2xl rounded-xl overflow-hidden border-[8px] border-blue-900/40 backdrop-blur-xl ring-1 ring-white/20">
                         {/* 8x8 Grid */}
-                        <div className="grid grid-cols-8 grid-rows-8 w-full h-full">
+                        <div className="grid grid-cols-8 grid-rows-8 w-full h-full bg-gradient-to-br from-blue-900/50 to-slate-900/50">
                             {renderBoard()}
                         </div>
 
                         {/* Result Overlay */}
                         {isGameOver && (
                             <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
-                                <div className="bg-slate-800 p-8 rounded-2xl border border-slate-600 shadow-xl text-center">
-                                    <h2 className="text-3xl font-bold mb-2">Game Over</h2>
-                                    <p className="text-xl mb-6 text-slate-300">
+                                <div className="bg-slate-900/90 backdrop-blur-xl p-8 rounded-2xl border border-white/10 shadow-2xl text-center transform scale-100 animate-in fade-in zoom-in duration-300">
+                                    <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Game Over</h2>
+                                    <p className="text-xl mb-8 text-slate-300 font-light">
                                         {game.isCheckmate() ? "Checkmate!" : "Draw"}
                                     </p>
                                     <button
@@ -462,7 +472,7 @@ export default function ChessGame() {
                                             setPlayerColor('white');
                                             setEngineStatus("AI Ready");
                                         }}
-                                        className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg font-bold transition-all"
+                                        className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-blue-500/20 transition-all transform hover:scale-105 active:scale-95"
                                     >
                                         Play Again
                                     </button>
@@ -476,15 +486,15 @@ export default function ChessGame() {
                 <div className="lg:col-span-4 space-y-4">
 
                     {/* Move History */}
-                    <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 h-[300px] flex flex-col">
+                    <div className="bg-slate-900/50 backdrop-blur-md rounded-xl p-4 border border-white/10 h-[300px] flex flex-col shadow-xl">
                         <h3 className="text-sm font-bold text-slate-400 mb-3 uppercase tracking-wider">Move History</h3>
                         <MoveHistory moves={history} />
                     </div>
 
                     {/* Controls */}
-                    <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 grid grid-cols-2 gap-3">
+                    <div className="bg-slate-900/50 backdrop-blur-md rounded-xl p-4 border border-white/10 grid grid-cols-2 gap-3 shadow-xl">
                         <button
-                            className="bg-slate-700 hover:bg-slate-600 py-2 rounded text-sm transition-colors"
+                            className="bg-gradient-to-r from-slate-700 to-slate-600 hover:from-slate-600 hover:to-slate-500 py-2 rounded-lg text-sm font-semibold shadow-lg transition-all transform hover:scale-105 active:scale-95"
                             onClick={() => {
                                 // Reset the game instance directly
                                 game.reset();
@@ -500,7 +510,7 @@ export default function ChessGame() {
                             New Game
                         </button>
                         <button
-                            className="bg-slate-700 hover:bg-slate-600 py-2 rounded text-sm transition-colors"
+                            className="bg-gradient-to-r from-slate-700 to-slate-600 hover:from-slate-600 hover:to-slate-500 py-2 rounded-lg text-sm font-semibold shadow-lg transition-all transform hover:scale-105 active:scale-95"
                             onClick={() => {
                                 setPlayerColor(playerColor === 'white' ? 'black' : 'white');
                                 setMoveFrom(null);
@@ -518,7 +528,7 @@ export default function ChessGame() {
                     </div>
 
                     {/* Features */}
-                    <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
+                    <div className="bg-slate-900/50 backdrop-blur-md rounded-xl p-4 border border-white/10 shadow-xl">
                         <h3 className="text-sm font-bold text-slate-400 mb-3 uppercase tracking-wider">Voice Settings</h3>
                         <div className="flex flex-col gap-3">
                             <VoiceControl onCommand={handleVoiceCommand} isListening={!isGameOver} />

@@ -22,8 +22,8 @@ export default function MoveHistory({ moves = [] }) {
     }
 
     return (
-        <div className="bg-white/5 border border-white/10 rounded-xl overflow-hidden flex flex-col h-64 md:h-96">
-            <div className="bg-brand-navy/50 p-3 border-b border-white/10">
+        <div className="bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden flex flex-col h-64 md:h-96 shadow-xl">
+            <div className="bg-slate-800/50 p-3 border-b border-white/10">
                 <h3 className="text-white font-display font-bold text-sm uppercase tracking-wider">Move History</h3>
             </div>
 

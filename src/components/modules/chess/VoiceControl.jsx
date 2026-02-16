@@ -64,9 +64,9 @@ export default function VoiceControl({ onCommand }) {
         <div className="mt-4 flex flex-col items-center gap-2">
             <button
                 onClick={toggleListening}
-                className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all shadow-lg ${isListening
-                        ? 'bg-red-500 hover:bg-red-600 text-white animate-pulse'
-                        : 'bg-brand-orange hover:bg-orange-600 text-white'
+                className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all shadow-lg transform hover:scale-105 active:scale-95 ${isListening
+                    ? 'bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white animate-pulse shadow-red-500/30'
+                    : 'bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white shadow-orange-500/30'
                     }`}
             >
                 <span className="material-symbols-outlined">
