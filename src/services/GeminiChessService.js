@@ -1,3 +1,8 @@
+/**
+ * File: services/GeminiChessService.js
+ * Service module for external API or backend interactions: GeminiChessService.
+ */
+
 import { SecurityUtils } from '../utils/SecurityUtils';
 import { SECRETS } from '../config/secrets';
 

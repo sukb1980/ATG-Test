@@ -1,3 +1,8 @@
+/*
+ * File: components/modules/games/SpinningWheel.css
+ * Games module component: SpinningWheel.
+ */
+
 .wheel-container {
     display: flex;
     flex-direction: column;

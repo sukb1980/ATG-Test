@@ -1,3 +1,8 @@
+/**
+ * File: pages/Marketing.jsx
+ * Top-level page component representing a major route in the application: Marketing.
+ */
+
 import React from 'react';
 
 export default function Marketing() {

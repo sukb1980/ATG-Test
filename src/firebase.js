@@ -1,3 +1,8 @@
+/**
+ * File: firebase.js
+ * Firebase configuration and initialization.
+ */
+
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";

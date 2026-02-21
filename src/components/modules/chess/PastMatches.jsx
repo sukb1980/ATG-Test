@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/chess/PastMatches.jsx
+ * Chess module component/utility: PastMatches. Handles chess game logic, UI, or AI interaction.
+ */
+
 import React, { useEffect, useState } from 'react';
 import { db, auth } from '../../../firebase';
 import { collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore';

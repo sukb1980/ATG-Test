@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/it-desk/TicketDetail.jsx
+ * IT Desk module component: TicketDetail. Handles IT ticketing and support features.
+ */
+
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Card from '../../common/Card';

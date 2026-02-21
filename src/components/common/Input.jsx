@@ -1,3 +1,8 @@
+/**
+ * File: components/common/Input.jsx
+ * Reusable common UI component: Input.
+ */
+
 import React from 'react';
 
 export default function Input({ label, type = 'text', value, onChange, placeholder, style }) {

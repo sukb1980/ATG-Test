@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/DepartmentLayout.jsx
+ * Module-specific component: DepartmentLayout.
+ */
+
 import React from 'react';
 import Card from '../common/Card';
 import Button from '../common/Button';

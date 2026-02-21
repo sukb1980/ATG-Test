@@ -1,3 +1,8 @@
+/**
+ * File: components/common/Badge.jsx
+ * Reusable common UI component: Badge.
+ */
+
 import React from 'react';
 
 export default function Badge({ children, color = 'primary' }) {

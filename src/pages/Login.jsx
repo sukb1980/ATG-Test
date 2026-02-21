@@ -1,3 +1,8 @@
+/**
+ * File: pages/Login.jsx
+ * Top-level page component representing a major route in the application: Login.
+ */
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

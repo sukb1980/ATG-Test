@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/leave/LeaveList.jsx
+ * Leave management module component: LeaveList. Handles employee leave requests and approvals.
+ */
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from '../../common/Card';

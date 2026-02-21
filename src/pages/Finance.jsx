@@ -1,3 +1,8 @@
+/**
+ * File: pages/Finance.jsx
+ * Top-level page component representing a major route in the application: Finance.
+ */
+
 import React from 'react';
 
 export default function Finance() {

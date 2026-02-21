@@ -1,3 +1,8 @@
+/**
+ * File: components/common/Button.jsx
+ * Reusable common UI component: Button.
+ */
+
 import React from 'react';
 import clsx from 'clsx';
 

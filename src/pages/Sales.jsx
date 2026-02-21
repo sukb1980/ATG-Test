@@ -1,3 +1,8 @@
+/**
+ * File: pages/Sales.jsx
+ * Top-level page component representing a major route in the application: Sales.
+ */
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 

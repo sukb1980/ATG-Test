@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/games/SustainabilityMission.jsx
+ * Games module component: SustainabilityMission.
+ */
+
 import React from 'react';
 import './SustainabilityMission.css';
 

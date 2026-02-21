@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/lpo/LPOList.jsx
+ * Local Purchase Order (LPO) module component: LPOList.
+ */
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from '../../common/Card';

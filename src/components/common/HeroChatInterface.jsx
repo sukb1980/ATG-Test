@@ -1,3 +1,8 @@
+/**
+ * File: components/common/HeroChatInterface.jsx
+ * Reusable common UI component: HeroChatInterface.
+ */
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 

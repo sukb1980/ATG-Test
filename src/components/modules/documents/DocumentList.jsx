@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/documents/DocumentList.jsx
+ * Document management module component: DocumentList.
+ */
+
 import React, { useState } from 'react';
 import Card from '../../common/Card';
 import Button from '../../common/Button';

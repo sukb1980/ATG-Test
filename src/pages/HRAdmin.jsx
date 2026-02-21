@@ -1,3 +1,8 @@
+/**
+ * File: pages/HRAdmin.jsx
+ * Top-level page component representing a major route in the application: HRAdmin.
+ */
+
 import React from 'react';
 
 const EMPLOYEES = [

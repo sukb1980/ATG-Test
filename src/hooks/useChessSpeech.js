@@ -1,3 +1,8 @@
+/**
+ * File: hooks/useChessSpeech.js
+ * Custom React hook for reusable logic: useChessSpeech.
+ */
+
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 export const useChessSpeech = () => {

@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/chess/MoveHistory.jsx
+ * Chess module component/utility: MoveHistory. Handles chess game logic, UI, or AI interaction.
+ */
+
 import React, { useRef, useEffect } from 'react';
 
 export default function MoveHistory({ moves = [] }) {

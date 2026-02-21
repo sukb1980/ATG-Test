@@ -1,3 +1,8 @@
+/**
+ * File: components/common/GamingCarousel.jsx
+ * Reusable common UI component: GamingCarousel.
+ */
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './GamingCarousel.css';

@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/chess/VoiceControl.jsx
+ * Chess module component/utility: VoiceControl. Handles chess game logic, UI, or AI interaction.
+ */
+
 import React, { useState, useEffect } from 'react';
 
 export default function VoiceControl({ onCommand }) {

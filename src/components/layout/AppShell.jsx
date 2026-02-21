@@ -1,3 +1,8 @@
+/**
+ * File: components/layout/AppShell.jsx
+ * Layout component defining the structure of the application: AppShell.
+ */
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';

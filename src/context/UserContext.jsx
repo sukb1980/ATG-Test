@@ -1,3 +1,8 @@
+/**
+ * File: context/UserContext.jsx
+ * React Context provider for global state management: UserContext.
+ */
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import {
     onAuthStateChanged,

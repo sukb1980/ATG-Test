@@ -1,3 +1,8 @@
+/**
+ * File: components/common/ErrorBoundary.jsx
+ * Reusable common UI component: ErrorBoundary.
+ */
+
 import React, { Component } from 'react';
 
 class ErrorBoundary extends Component {

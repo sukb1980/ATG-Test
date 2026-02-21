@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/chess/ChessGame.jsx
+ * Chess module component/utility: ChessGame. Handles chess game logic, UI, or AI interaction.
+ */
+
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Chess } from 'chess.js';
 import { StockfishEngine } from './StockfishEngine';

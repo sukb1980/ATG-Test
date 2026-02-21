@@ -1,3 +1,8 @@
+/**
+ * File: pages/Settings.jsx
+ * Top-level page component representing a major route in the application: Settings.
+ */
+
 import React, { useState } from 'react';
 
 export default function Settings() {

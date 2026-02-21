@@ -1,3 +1,8 @@
+/**
+ * File: components/common/KoreAIButton.jsx
+ * Reusable common UI component: KoreAIButton.
+ */
+
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 // Default demo key

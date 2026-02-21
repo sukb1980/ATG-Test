@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/games/DiceGame.jsx
+ * Games module component: DiceGame.
+ */
+
 import React, { useState } from 'react';
 import './DiceGame.css';
 

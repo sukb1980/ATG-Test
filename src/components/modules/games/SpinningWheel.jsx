@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/games/SpinningWheel.jsx
+ * Games module component: SpinningWheel.
+ */
+
 import React, { useState } from 'react';
 import './SpinningWheel.css';
 

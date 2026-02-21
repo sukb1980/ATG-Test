@@ -1,3 +1,8 @@
+/**
+ * File: config/secrets.js
+ * Utility or configuration file: secrets.
+ */
+
 // This file stores "encrypted" secrets.
 // Access these using the SecurityUtils.decrypt() method.
 

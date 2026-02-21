@@ -1,3 +1,8 @@
+/**
+ * File: pages/Legal.jsx
+ * Top-level page component representing a major route in the application: Legal.
+ */
+
 import React from 'react';
 
 export default function Legal() {

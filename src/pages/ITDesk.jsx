@@ -1,3 +1,8 @@
+/**
+ * File: pages/ITDesk.jsx
+ * Top-level page component representing a major route in the application: ITDesk.
+ */
+
 import React, { useState } from 'react';
 
 export default function ITDesk() {

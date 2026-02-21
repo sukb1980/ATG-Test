@@ -1,3 +1,8 @@
+/**
+ * File: pages/Games.jsx
+ * Top-level page component representing a major route in the application: Games.
+ */
+
 import React, { useState } from 'react';
 import SpinningWheel from '../components/modules/games/SpinningWheel';
 import DiceGame from '../components/modules/games/DiceGame';

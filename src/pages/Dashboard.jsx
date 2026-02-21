@@ -1,3 +1,8 @@
+/**
+ * File: pages/Dashboard.jsx
+ * Top-level page component representing a major route in the application: Dashboard.
+ */
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import GamingCarousel from '../components/common/GamingCarousel';

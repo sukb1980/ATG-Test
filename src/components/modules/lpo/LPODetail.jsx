@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/lpo/LPODetail.jsx
+ * Local Purchase Order (LPO) module component: LPODetail.
+ */
+
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Card from '../../common/Card';

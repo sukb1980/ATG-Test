@@ -1,3 +1,8 @@
+/**
+ * File: pages/Engineering.jsx
+ * Top-level page component representing a major route in the application: Engineering.
+ */
+
 import React from 'react';
 
 export default function Engineering() {

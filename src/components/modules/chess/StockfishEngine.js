@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/chess/StockfishEngine.js
+ * Chess module component/utility: StockfishEngine. Handles chess game logic, UI, or AI interaction.
+ */
+
 export class StockfishEngine {
     constructor() {
         // Fix for GitHub Pages deployment (base path /ATG-Test/)

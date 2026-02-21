@@ -1,3 +1,8 @@
+/**
+ * File: App.jsx
+ * Entry point and main application component/setup.
+ */
+
 import React, { Suspense } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';

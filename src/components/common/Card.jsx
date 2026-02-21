@@ -1,3 +1,8 @@
+/**
+ * File: components/common/Card.jsx
+ * Reusable common UI component: Card.
+ */
+
 import React from 'react';
 import clsx from 'clsx';
 

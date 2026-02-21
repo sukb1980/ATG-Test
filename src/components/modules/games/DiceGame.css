@@ -1,3 +1,8 @@
+/*
+ * File: components/modules/games/DiceGame.css
+ * Games module component: DiceGame.
+ */
+
 .dice-container {
     display: flex;
     flex-direction: column;

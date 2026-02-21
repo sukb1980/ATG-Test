@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/leave/LeaveDetail.jsx
+ * Leave management module component: LeaveDetail. Handles employee leave requests and approvals.
+ */
+
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Card from '../../common/Card';

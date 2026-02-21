@@ -1,3 +1,8 @@
+/**
+ * File: components/modules/it-desk/TicketForm.jsx
+ * IT Desk module component: TicketForm. Handles IT ticketing and support features.
+ */
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from '../../common/Card';
