@@ -25,9 +25,6 @@ export default function Login() {
                 <div className="absolute inset-0 opacity-40 mix-blend-overlay bg-[url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2560&auto=format&fit=crop')] bg-cover bg-center"></div>
                 <div className="relative z-10 text-center px-10">
                     <h1 className="font-display text-5xl font-bold text-white mb-4 tracking-tight">EXCELLENCE DRIVES US</h1>
-                    <p className="text-brand-border/80 text-lg font-light tracking-wide max-w-md mx-auto">
-                        Premier automotive experiences across the UAE.
-                    </p>
                 </div>
             </div>
 
