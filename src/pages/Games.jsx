@@ -3,7 +3,8 @@
  * Top-level page component representing a major route in the application: Games.
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import SpinningWheel from '../components/modules/games/SpinningWheel';
 import DiceGame from '../components/modules/games/DiceGame';
 import SustainabilityMission from '../components/modules/games/SustainabilityMission';
@@ -20,7 +21,14 @@ const GAMES_LIST = [
 ];
 
 export default function Games() {
-    const [activeGame, setActiveGame] = useState('chess');
+    const location = useLocation();
+    const [activeGame, setActiveGame] = useState(location.state?.activeGame || 'chess');
+
+    useEffect(() => {
+        if (location.state?.activeGame) {
+            setActiveGame(location.state.activeGame);
+        }
+    }, [location.state?.activeGame]);
 
     const ActiveComponent = GAMES_LIST.find(g => g.id === activeGame)?.component || SpinningWheel;
 

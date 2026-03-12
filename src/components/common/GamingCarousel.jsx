@@ -9,7 +9,15 @@ import './GamingCarousel.css';
 
 const GAMES = [
     {
-        id: 'retail-premier',
+        id: 'chess',
+        title: 'Grandmaster AI',
+        desc: 'Challenge the AI in Corporate Chess',
+        icon: 'smart_toy',
+        color: 'from-violet-500 to-indigo-500',
+        image: 'https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&q=80&w=400'
+    },
+    {
+        id: 'premier',
         title: 'Retail Premier League',
         desc: 'Spin for Sales & NPS Metrics',
         icon: 'workspace_premium',
@@ -17,7 +25,7 @@ const GAMES = [
         image: 'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&q=80&w=400'
     },
     {
-        id: 'ramadan-kindness',
+        id: 'ramadan',
         title: 'Ramadan Kindness Quest',
         desc: 'Roll the Dice for Community',
         icon: 'volunteer_activism',
@@ -25,7 +33,7 @@ const GAMES = [
         image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=400'
     },
     {
-        id: 'sustainability-mission',
+        id: 'green',
         title: 'Sustainability Mission',
         desc: 'Track Our Green Impact',
         icon: 'eco',
@@ -55,7 +63,7 @@ export default function GamingCarousel() {
                 <div className="carousel-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                     {GAMES.map((game, index) => (
                         <div key={game.id} className="carousel-slide">
-                            <div className="game-card" onClick={() => navigate('/games')}>
+                            <div className="game-card" onClick={() => navigate('/games', { state: { activeGame: game.id } })}>
                                 <div className="game-image" style={{ backgroundImage: `url(${game.image})` }}>
                                     <div className={`game-overlay bg-gradient-to-br ${game.color} opacity-60`}></div>
                                     <div className="game-content">
